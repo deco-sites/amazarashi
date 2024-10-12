@@ -2770,6 +2770,9 @@ input.tab:checked + .tab-content,
 .whitespace-nowrap {
   white-space: nowrap;
 }
+.whitespace-break-spaces {
+  white-space: break-spaces;
+}
 .break-words {
   overflow-wrap: break-word;
 }
@@ -3177,6 +3180,7 @@ input.tab:checked + .tab-content,
   }
 .bottomAnimatedGradient {
     position: relative;
+    overflow: hidden;
   }
 .bottomAnimatedGradient::before {
     content: "";
@@ -3191,6 +3195,7 @@ input.tab:checked + .tab-content,
     animation: bottomAnimatedGradient 1s ease;
     animation-fill-mode: forwards;
     animation-delay: 0.5s;
+    z-index: 2;
   }
 @keyframes bottomAnimatedGradient {
     0% {
