@@ -179,6 +179,7 @@
 
   .bottomAnimatedGradient {
     position: relative;
+    overflow: hidden;
   }
 
   .bottomAnimatedGradient::before {
@@ -194,6 +195,7 @@
     animation: bottomAnimatedGradient 1s ease;
     animation-fill-mode: forwards;
     animation-delay: 0.5s;
+    z-index: 2;
   }
   @keyframes bottomAnimatedGradient {
     0% {

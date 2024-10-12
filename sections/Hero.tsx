@@ -1,9 +1,9 @@
-import { ImageWidget } from "apps/admin/widgets.ts";
+import { ImageWidget, TextArea } from "apps/admin/widgets.ts";
 import Image from "apps/website/components/Image.tsx";
 
 export interface Props {
   title: string;
-  description: string;
+  description: TextArea;
   backgroundImage: {
     source: ImageWidget;
     alt: string;
@@ -42,7 +42,7 @@ export default function Hero(
       <div className="relative z-10 flex flex-col-reverse items-center gap-8 lg:gap-10 lg:items-end p-6 lg:p-36  h-full overflow-hidden lg:flex-row justify-center">
         <div className="bottomAnimationFadIn text-center lg:text-left">
           <h1 className="mb-3">{title}</h1>
-          <p>{description}</p>
+          <p className="whitespace-break-spaces">{description}</p>
           <a href={cta.link} className="mt-6">
             {cta.label}
           </a>
