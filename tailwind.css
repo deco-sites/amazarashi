@@ -3,27 +3,126 @@
 @tailwind utilities;
 
 @layer base {
-
   /* Allow changing font family via CMS */
   html {
     font-family: var(--font-family);
+    color: #ffffff;
+    background-color: #171717 !important;
   }
 
   /** Remove default styles from input[type=number] */
-  input[type=number]::-webkit-inner-spin-button,
-  input[type=number]::-webkit-outer-spin-button {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
 
-  input[type=number] {
+  input[type="number"] {
     -moz-appearance: textfield;
     appearance: textfield;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #ffffff;
+  }
+  /* Parágrafos */
+  p {
+    color: #ffffff;
+    font-size: 16px; /* Parágrafos mobile */
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  @screen lg {
+    p {
+      font-size: 18px; /* Parágrafos desktop */
+    }
+  }
+
+  /* H1 */
+  h1 {
+    font-size: 44px; /* H1 Mobile */
+    line-height: 1.2;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  @screen lg {
+    h1 {
+      font-size: 64px; /* H1 Desktop */
+    }
+  }
+
+  /* H2 */
+  h2 {
+    font-size: 36px; /* H2 Mobile */
+    line-height: 1.3;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  @screen lg {
+    h2 {
+      font-size: 48px; /* H2 Desktop */
+    }
+  }
+
+  /* H3 */
+  h3 {
+    font-size: 28px; /* H3 Mobile */
+    line-height: 1.3;
+    font-weight: 500;
+  }
+
+  @screen lg {
+    h3 {
+      font-size: 32px; /* H3 Desktop */
+    }
+  }
+
+  /* H4 */
+  h4 {
+    font-size: 20px; /* H4 Mobile */
+    line-height: 1.4;
+    font-weight: 400;
+  }
+
+  @screen lg {
+    h4 {
+      font-size: 24px; /* H4 Desktop */
+    }
+  }
+
+  a {
+    color: #ffffff; /* Cor do link */
+    text-decoration: none; /* Sem sublinhado */
+    transition: color 0.3s; /* Transição suave para a cor */
+    position: relative;
+    display: inline-block;
+  }
+  a::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff; /* Cor da linha */
+    transition: width 0.3s; /* Transição suave para a largura */
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    bottom: 0;
+  }
+  a:hover::before {
+    width: 100%;
   }
 }
 
 @layer components {
-
   /** Prevent scroll when modal is open */
   .no-scroll {
     overflow: hidden;
@@ -32,7 +131,6 @@
 }
 
 @layer utilities {
-
   /** Remove scrollbar from overflow-auto */
   .scrollbar-none {
     scrollbar-width: none;
@@ -41,5 +139,68 @@
 
   .scrollbar-none::-webkit-scrollbar {
     display: none;
+  }
+
+  .bottomAnimationFadIn {
+    animation: bottomAnimationFadIn 0.5s ease;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+    animation-delay: 0.5s;
+    transform: translateY(calc((100% + 1.5rem) * -1));
+    @screen lg {
+      transform: translateY(calc(100% + 9rem));
+      animation: bottomAnimationFadInLg 0.5s ease;
+      animation-delay: 0.5s;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  @keyframes bottomAnimationFadIn {
+    from {
+      opacity: 0;
+      transform: translateY(calc((100% + 1.5rem) * -1));
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes bottomAnimationFadInLg {
+    from {
+      opacity: 0;
+      transform: translateY(calc(100% + 9rem));
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .bottomAnimatedGradient {
+    position: relative;
+  }
+
+  .bottomAnimatedGradient::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(23, 23, 23, 1) 10%, rgba(255, 255, 255, 0) 100%);
+    animation: bottomAnimatedGradient 1s ease;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s;
+  }
+  @keyframes bottomAnimatedGradient {
+    0% {
+      top: 100%;
+    }
+    100% {
+      top: 0;
+    }
   }
 }
