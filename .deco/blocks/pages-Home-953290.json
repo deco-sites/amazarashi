@@ -1,0 +1,27 @@
+{
+  "name": "Home",
+  "path": "/",
+  "sections": [
+    {
+      "__resolveType": "site/sections/Hero.tsx",
+      "title": "Amazarashi",
+      "description": "Alguma Coisa",
+      "backgroundImage": {
+        "source": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/amazarashi/728ae9b6-e72d-4edd-a305-d2494feb4966/amazarashi_banner.jpeg",
+        "alt": "Cover da Crunchroll"
+      },
+      "coverImage": {
+        "source": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/amazarashi/bcbf7865-b945-4632-a5e5-2a533fc88885/amazarashi_cover.jpg",
+        "alt": "Album Cidade Eterna"
+      },
+      "cta": {
+        "label": "Saiba Mais",
+        "link": "/"
+      }
+    }
+  ],
+  "seo": {
+    "__resolveType": "website/sections/Seo/SeoV2.tsx"
+  },
+  "__resolveType": "website/pages/Page.tsx"
+}
