@@ -5,11 +5,15 @@
 import * as $$$$$$$$$$$0 from "./apps/deco/htmx.ts";
 import * as $$$$$$$$$$$1 from "./apps/deco/records.ts";
 import * as $$$$$$$$$$$2 from "./apps/site.ts";
+import * as $$$0 from "./loaders/CoverSlider/records.ts";
 import * as $$$$$$0 from "./sections/CoverSlider.tsx";
 import * as $$$$$$1 from "./sections/Hero.tsx";
 import * as $$$$$$2 from "./sections/Theme/Theme.tsx";
 
 const manifest = {
+  "loaders": {
+    "site/loaders/CoverSlider/records.ts": $$$0,
+  },
   "sections": {
     "site/sections/CoverSlider.tsx": $$$$$$0,
     "site/sections/Hero.tsx": $$$$$$1,

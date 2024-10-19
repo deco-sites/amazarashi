@@ -81,7 +81,7 @@
 
   @screen lg {
     h3 {
-      font-size: 32px; /* H3 Desktop */
+      font-size: 30px; /* H3 Desktop */
     }
   }
 
@@ -98,14 +98,14 @@
     }
   }
 
-  a {
+  a.animated {
     color: #ffffff; /* Cor do link */
     text-decoration: none; /* Sem sublinhado */
     transition: color 0.3s; /* Transição suave para a cor */
     position: relative;
     display: inline-block;
   }
-  a::before {
+  a.animated::before {
     content: "";
     display: block;
     width: 0;
@@ -117,7 +117,7 @@
     position: absolute;
     bottom: 0;
   }
-  a:hover::before {
+  a.animated:hover::before {
     width: 100%;
   }
 }

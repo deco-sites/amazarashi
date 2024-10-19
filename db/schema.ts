@@ -1,17 +1,13 @@
-import { sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const albuns = sqliteTable("albuns", {
   id: text("id").primaryKey(),
-  name: text("name").notNull(),
-  description: text("description").notNull(),
+  nameRomaji: text("name_romanji").notNull(),
+  nameHiragana: text("name_hiragana").notNull(),
+  nameEnglish: text("name_english").notNull(),
+  namePortuguese: text("name_portuguese").notNull(),
   image: text("image").notNull(),
-});
-
-export const tracks = sqliteTable("tracks", {
-  id: text("id").primaryKey(),
-  name: text("name").notNull(),
-  duration: text("duration").notNull(),
-  album_id: text("album_id")
-    .notNull()
-    .references(() => albuns.id),
+  releaseDate: integer("release_date", {
+    mode: "timestamp",
+  }).notNull(),
 });
