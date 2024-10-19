@@ -27,8 +27,20 @@
     "directives": []
   },
   "__resolveType": "site/apps/site.ts",
-  "firstByteThresholdMS": true,
+  "firstByteThresholdMS": false,
   "theme": {
     "__resolveType": "Amazarashi"
+  },
+  "abTesting": {
+    "replaces": [],
+    "includeScriptsToHead": {
+      "includes": []
+    },
+    "includeScriptsToBody": {
+      "includes": []
+    }
+  },
+  "flavor": {
+    "framework": "fresh"
   }
 }

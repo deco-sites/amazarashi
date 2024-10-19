@@ -18,6 +18,15 @@
         "label": "Saiba Mais",
         "link": "/"
       }
+    },
+    {
+      "__resolveType": "site/sections/CoverSlider.tsx",
+      "title": "Ultimos Albums",
+      "albums": {
+        "__resolveType": "site/loaders/CoverSlider/records.ts",
+        "titleGetter": "nameRomaji",
+        "language": "romanji"
+      }
     }
   ],
   "seo": {

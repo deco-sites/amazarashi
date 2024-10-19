@@ -1,10 +1,10 @@
 {
   "__resolveType": "site/sections/Theme/Theme.tsx",
-  "colorScheme": "dark",
+  "colorScheme": "any",
   "buttonStyle": {
     "--border-btn": "1px",
     "--rounded-btn": "0.2rem",
-    "--btn-focus-scale": 0.95,
+    "--btn-focus-scale": "0.9",
     "--animation-btn": "0.25s"
   },
   "otherStyles": {
