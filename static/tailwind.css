@@ -679,10 +679,28 @@ html {
   margin-right: auto;
   margin-left: auto;
 }
+@media (min-width: 768px) {
+
+  .container {
+    max-width: 768px;
+  }
+}
 @media (min-width: 1024px) {
 
   .container {
     max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+
+  .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+
+  .container {
+    max-width: 1536px;
   }
 }
 .badge {
@@ -2544,9 +2562,6 @@ input.tab:checked + .tab-content,
 .w-12 {
   width: 3rem;
 }
-.w-2\/12 {
-  width: 16.666667%;
-}
 .w-\[10px\] {
   width: 10px;
 }
@@ -2570,6 +2585,9 @@ input.tab:checked + .tab-content,
 }
 .w-\[522px\] {
   width: 522px;
+}
+.w-\[calc\(100vw_-_48px_-_24px\)\] {
+  width: calc(100vw - 48px - 24px);
 }
 .w-full {
   width: 100%;
@@ -2964,11 +2982,17 @@ input.tab:checked + .tab-content,
 .pl-3 {
   padding-left: 0.75rem;
 }
+.pl-6 {
+  padding-left: 1.5rem;
+}
 .pr-2 {
   padding-right: 0.5rem;
 }
 .pr-4 {
   padding-right: 1rem;
+}
+.pr-6 {
+  padding-right: 1.5rem;
 }
 .pt-2 {
   padding-top: 0.5rem;
@@ -3188,6 +3212,29 @@ input.tab:checked + .tab-content,
       top: 0;
     }
   }
+@media (min-width: 768px) {
+
+  .md\:btn-sm {
+    height: 2rem;
+    min-height: 2rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .btn-square:where(.md\:btn-sm) {
+    height: 2rem;
+    width: 2rem;
+    padding: 0px;
+  }
+
+  .btn-circle:where(.md\:btn-sm) {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 9999px;
+    padding: 0px;
+  }
+}
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -3214,6 +3261,22 @@ input.tab:checked + .tab-content,
   --tw-bg-opacity: 1;
   background-color: rgb(13 23 23 / var(--tw-bg-opacity));
 }
+@media (min-width: 768px) {
+
+  .md\:w-\[calc\(\(100vw_-_48px_-_24px\)\/2\)\] {
+    width: calc((100vw - 48px - 24px) / 2);
+  }
+
+  .md\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .md\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
 @media (min-width: 1024px) {
 
   .lg\:grid {
@@ -3226,6 +3289,10 @@ input.tab:checked + .tab-content,
 
   .lg\:max-h-\[600px\] {
     max-height: 600px;
+  }
+
+  .lg\:w-3\/12 {
+    width: 25%;
   }
 
   .lg\:max-w-\[25vw\] {
@@ -3256,20 +3323,20 @@ input.tab:checked + .tab-content,
     gap: 2.5rem;
   }
 
-  .lg\:p-36 {
-    padding: 9rem;
+  .lg\:p-20 {
+    padding: 5rem;
   }
 
   .lg\:pb-\[10dvh\] {
     padding-bottom: 10dvh;
   }
 
-  .lg\:pl-36 {
-    padding-left: 9rem;
+  .lg\:pl-20 {
+    padding-left: 5rem;
   }
 
-  .lg\:pr-36 {
-    padding-right: 9rem;
+  .lg\:pr-20 {
+    padding-right: 5rem;
   }
 
   .lg\:text-left {
@@ -3278,5 +3345,23 @@ input.tab:checked + .tab-content,
 
   .lg\:text-\[26px\] {
     font-size: 26px;
+  }
+}
+@media (min-width: 1280px) {
+
+  .xl\:w-2\/12 {
+    width: 16.666667%;
+  }
+
+  .xl\:p-36 {
+    padding: 9rem;
+  }
+
+  .xl\:pl-36 {
+    padding-left: 9rem;
+  }
+
+  .xl\:pr-36 {
+    padding-right: 9rem;
   }
 }

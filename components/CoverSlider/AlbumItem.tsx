@@ -33,7 +33,7 @@ export default function AlbumItem(props: AlbumProps) {
   );
 
   return (
-    <li className="carousel-item w-2/12 group">
+    <li className="carousel-item w-[calc(100vw_-_48px_-_24px)] md:w-[calc((100vw_-_48px_-_24px)/2)] lg:w-3/12 xl:w-2/12 group">
       <Wrapper>
         <Content />
       </Wrapper>

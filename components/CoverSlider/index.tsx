@@ -13,6 +13,17 @@ export interface CoverSliderProps {
   albums: AlbumProps[];
 }
 
+function modulo(a: number) {
+  if (a < 0) {
+    return a * -1;
+  }
+  return a;
+}
+
+function percentage(originalValue: number, percentage: number) {
+  return (originalValue * percentage) / 100;
+}
+
 const loadCarrousselButtons = ({ nextButtonId, prevButtonId, carruselId }: { nextButtonId: string; prevButtonId: string; carruselId: string }) => {
   const nextButton = document.getElementById(nextButtonId);
   const prevButton = document.getElementById(prevButtonId);
@@ -30,8 +41,26 @@ const loadCarrousselButtons = ({ nextButtonId, prevButtonId, carruselId }: { nex
     carrusel.scrollLeft -= carrusel.clientWidth;
   };
 
+  const mobileHandleTouchEnd = (e: TouchEvent) => {
+    const maxHeightAllowed = 100;
+    const minWidthRequired = percentage(carrusel.clientWidth, 80);
+    const startPointPos = e.changedTouches[0].clientX;
+    const endPointPos = e.changedTouches[1].clientX;
+    const touchHeight = modulo(e.changedTouches[0].clientY - e.changedTouches[1].clientY);
+    const touchWidth = modulo(startPointPos - endPointPos);
+    const direction = startPointPos > endPointPos ? "left" : "right";
+    if (touchHeight > maxHeightAllowed) return;
+    if (touchWidth < minWidthRequired) return;
+    if (direction === "left") {
+      next();
+    } else {
+      prev();
+    }
+  };
+
   nextButton.addEventListener("click", next);
   prevButton.addEventListener("click", prev);
+  // carrusel.addEventListener("touchend", mobileHandleTouchEnd);
 };
 
 /**
@@ -44,8 +73,8 @@ export default function CoverSlider(props: CoverSliderProps) {
   const carruselId = useId();
 
   return (
-    <div className="lg:pl-36">
-      <div className="flex justify-between items-center lg:pr-36 mb-6">
+    <div className="pl-6 lg:pl-20 xl:pl-36">
+      <div className="flex justify-between items-center pr-6 lg:pr-20 xl:pr-36 mb-6">
         {title ? <h2 className="whitespace-break-spaces">{title}</h2> : null}
         <div className="flex gap-3">
           <button data-slide="prev" aria-label="Previous item" className="btn btn-ghost btn-circle btn-info" id={prevButtonId}>
@@ -57,7 +86,7 @@ export default function CoverSlider(props: CoverSliderProps) {
           </button>
         </div>
       </div>
-      <ul className="carousel w-full gap-3 lg:pr-36" id={carruselId}>
+      <ul className="carousel w-full gap-3 pr-6 lg:pr-20 xl:pr-36" id={carruselId}>
         {albums.map((album, index) => (
           <AlbumItem {...album} key={`${album.cover.source}${index}`} />
         ))}

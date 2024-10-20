@@ -20,7 +20,10 @@ const TailwindConfig: Config = {
       },
     },
     screens: {
+      md: "768px", // Breakpoint para tablet
       lg: "1024px", // Breakpoint para desktop
+      xl: "1280px", // Breakpoint para desktop grande
+      "2xl": "1536px", // Breakpoint para desktop grande
     },
   },
 };
