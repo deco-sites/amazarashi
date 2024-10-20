@@ -18,7 +18,9 @@ export interface Props {
     label: string;
   };
 }
-
+/**
+ * @title Hero
+ */
 export default function Hero(
   { title, cta, backgroundImage, coverImage, description }: Props = {
     title: "Amazarashi",
@@ -39,7 +41,7 @@ export default function Hero(
   const { ScriptRender, nextButtonId } = useScrollToNextSection();
   return (
     <article className="relative h-full lg:pb-[10dvh] bottomAnimatedGradient z-10">
-      <div className="relative z-10 flex flex-col-reverse items-center gap-8 lg:gap-10 lg:items-end p-6 lg:p-36 lg:h-[90dvh] overflow-hidden lg:flex-row justify-center">
+      <div className="relative z-10 flex flex-col-reverse items-center gap-8 lg:gap-10 lg:items-end p-6 lg:p-20 xl:p-36 lg:h-[90dvh] overflow-hidden lg:flex-row justify-center">
         <div className="bottomAnimationFadIn text-center lg:text-left">
           <h1 className="mb-3">{title}</h1>
           <p className="whitespace-break-spaces">{description}</p>
