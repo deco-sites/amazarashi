@@ -1,40 +1,7 @@
 import { asset } from "$fresh/runtime.ts";
 import type { JSX } from "preact";
 
-export type AvailableIcons =
-  | "ChevronLeft"
-  | "ChevronRight"
-  | "ChevronUp"
-  | "ChevronDown"
-  | "QuestionMarkCircle"
-  | "User"
-  | "ShoppingCart"
-  | "Bars3"
-  | "Heart"
-  | "MagnifyingGlass"
-  | "XMark"
-  | "Plus"
-  | "Minus"
-  | "MapPin"
-  | "Phone"
-  | "Elo"
-  | "Mastercard"
-  | "Visa"
-  | "Pix"
-  | "Logo"
-  | "Facebook"
-  | "Instagram"
-  | "Tiktok"
-  | "Truck"
-  | "Discount"
-  | "Return"
-  | "CreditCard"
-  | "Deco"
-  | "Discord"
-  | "Trash"
-  | "FilterList"
-  | "WhatsApp"
-  | "ArrowsPointingOut";
+export type AvailableIcons = "ChevronLeft" | "ChevronRight" | "ChevronUp" | "ChevronDown" | "QuestionMarkCircle" | "User" | "ShoppingCart" | "Bars3" | "Heart" | "MagnifyingGlass" | "XMark" | "Plus" | "Minus" | "MapPin" | "Phone" | "Elo" | "Mastercard" | "Visa" | "Pix" | "Logo" | "Facebook" | "Instagram" | "Tiktok" | "Truck" | "Discount" | "Return" | "CreditCard" | "Deco" | "Discord" | "Trash" | "FilterList" | "WhatsApp" | "ArrowsPointingOut" | "ArrowBack";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**
@@ -46,16 +13,9 @@ interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   size?: number;
 }
 
-function Icon(
-  { id, strokeWidth = 16, size, width, height, ...otherProps }: Props,
-) {
+function Icon({ id, strokeWidth = 16, size, width, height, ...otherProps }: Props) {
   return (
-    <svg
-      {...otherProps}
-      width={width ?? size}
-      height={height ?? size}
-      strokeWidth={strokeWidth}
-    >
+    <svg {...otherProps} width={width ?? size} height={height ?? size} strokeWidth={strokeWidth}>
       <use href={asset(`/sprites.svg#${id}`)} />
     </svg>
   );

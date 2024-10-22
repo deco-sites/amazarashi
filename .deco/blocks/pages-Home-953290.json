@@ -3,6 +3,10 @@
   "path": "/",
   "sections": [
     {
+      "__resolveType": "website/sections/Seo/SeoV2.tsx",
+      "title": "Home"
+    },
+    {
       "__resolveType": "site/sections/Hero.tsx",
       "title": "Amazarashi",
       "description": "Amazarashi é uma banda de rock japonesa da cidade de Aomori. Formada em 2007 pelos membros Hiromu Akita e Manami Toyokawa. \nAlgumas músicas notáveis são \"Sora ni Utaeba\" 3ª Opening de My Hero Academia, \"Speed to Masatsu\" Opening de Rampo Kitan: Game of Laplace, a famosa \"Kisetsu wa Tsugitsugi Shindeiku\"(Estações morrem uma após a outra) que é tema de encerramento de Tokyo Ghoul e \"Kyoukaisen\"(Fronteira) Opening de 2ª Temporada de Eighty-Six.",
@@ -25,7 +29,15 @@
       "albums": {
         "__resolveType": "site/loaders/CoverSlider/records.ts",
         "titleGetter": "nameRomaji",
-        "language": "romanji"
+        "language": "romanji",
+        "maxItems": 10,
+        "albumPath": "/album/"
+      },
+      "covers": {
+        "__resolveType": "site/loaders/CoverSlider/records.ts",
+        "language": "romanji",
+        "albumPath": "/album/",
+        "maxItems": 10
       }
     }
   ],
