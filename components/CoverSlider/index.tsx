@@ -1,27 +1,19 @@
 import { useScript } from "@deco/deco/hooks";
+import CoverItem, { CoverItemProps } from "site/components/CoverSlider/CoverItem.tsx";
 import Icon from "site/components/ui/Icon.tsx";
 import { useId } from "site/sdk/useId.ts";
-import type { AlbumProps } from "./AlbumItem.tsx";
-import AlbumItem from "./AlbumItem.tsx";
 
 /**
  * @title Custom Cover Slider
  */
 export interface CoverSliderProps {
   title?: string;
-  /** @title Covers */
-  albums: AlbumProps[];
-}
-
-function modulo(a: number) {
-  if (a < 0) {
-    return a * -1;
-  }
-  return a;
-}
-
-function percentage(originalValue: number, percentage: number) {
-  return (originalValue * percentage) / 100;
+  /**
+   * @title Covers
+   * @format dynamic-options
+   * @options deco-sites/amazarashi/loaders/CoverSlider/records.ts
+   */
+  covers: CoverItemProps[];
 }
 
 const loadCarrousselButtons = ({ nextButtonId, prevButtonId, carruselId }: { nextButtonId: string; prevButtonId: string; carruselId: string }) => {
@@ -41,33 +33,15 @@ const loadCarrousselButtons = ({ nextButtonId, prevButtonId, carruselId }: { nex
     carrusel.scrollLeft -= carrusel.clientWidth;
   };
 
-  const mobileHandleTouchEnd = (e: TouchEvent) => {
-    const maxHeightAllowed = 100;
-    const minWidthRequired = percentage(carrusel.clientWidth, 80);
-    const startPointPos = e.changedTouches[0].clientX;
-    const endPointPos = e.changedTouches[1].clientX;
-    const touchHeight = modulo(e.changedTouches[0].clientY - e.changedTouches[1].clientY);
-    const touchWidth = modulo(startPointPos - endPointPos);
-    const direction = startPointPos > endPointPos ? "left" : "right";
-    if (touchHeight > maxHeightAllowed) return;
-    if (touchWidth < minWidthRequired) return;
-    if (direction === "left") {
-      next();
-    } else {
-      prev();
-    }
-  };
-
   nextButton.addEventListener("click", next);
   prevButton.addEventListener("click", prev);
-  // carrusel.addEventListener("touchend", mobileHandleTouchEnd);
 };
 
 /**
  * @title Cover Slider
  */
 export default function CoverSlider(props: CoverSliderProps) {
-  const { title, albums } = props;
+  const { title, covers } = props;
   const nextButtonId = useId();
   const prevButtonId = useId();
   const carruselId = useId();
@@ -87,8 +61,8 @@ export default function CoverSlider(props: CoverSliderProps) {
         </div>
       </div>
       <ul className="carousel w-full gap-3 pr-6 lg:pr-20 xl:pr-36" id={carruselId}>
-        {albums.map((album, index) => (
-          <AlbumItem {...album} key={`${album.cover.source}${index}`} />
+        {covers.map((album, index) => (
+          <CoverItem {...album} key={`${album.cover.source}${index}`} />
         ))}
       </ul>
       <script

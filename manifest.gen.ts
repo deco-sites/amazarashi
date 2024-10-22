@@ -5,19 +5,29 @@
 import * as $$$$$$$$$$$0 from "./apps/deco/htmx.ts";
 import * as $$$$$$$$$$$1 from "./apps/deco/records.ts";
 import * as $$$$$$$$$$$2 from "./apps/site.ts";
-import * as $$$0 from "./loaders/CoverSlider/records.ts";
-import * as $$$$$$0 from "./sections/CoverSlider.tsx";
-import * as $$$$$$1 from "./sections/Hero.tsx";
-import * as $$$$$$2 from "./sections/Theme/Theme.tsx";
+import * as $$$0 from "./loaders/AlbumInfo/records.ts";
+import * as $$$1 from "./loaders/CoverSlider/records.ts";
+import * as $$$2 from "./loaders/SeoLoader/records/album.ts";
+import * as $$$3 from "./loaders/utils/languagesTitles.ts";
+import * as $$$$$$0 from "./sections/AlbumInfo.tsx";
+import * as $$$$$$1 from "./sections/CoverSlider.tsx";
+import * as $$$$$$2 from "./sections/Hero.tsx";
+import * as $$$$$$3 from "./sections/SeoLoader.tsx";
+import * as $$$$$$4 from "./sections/Theme/Theme.tsx";
 
 const manifest = {
   "loaders": {
-    "site/loaders/CoverSlider/records.ts": $$$0,
+    "site/loaders/AlbumInfo/records.ts": $$$0,
+    "site/loaders/CoverSlider/records.ts": $$$1,
+    "site/loaders/SeoLoader/records/album.ts": $$$2,
+    "site/loaders/utils/languagesTitles.ts": $$$3,
   },
   "sections": {
-    "site/sections/CoverSlider.tsx": $$$$$$0,
-    "site/sections/Hero.tsx": $$$$$$1,
-    "site/sections/Theme/Theme.tsx": $$$$$$2,
+    "site/sections/AlbumInfo.tsx": $$$$$$0,
+    "site/sections/CoverSlider.tsx": $$$$$$1,
+    "site/sections/Hero.tsx": $$$$$$2,
+    "site/sections/SeoLoader.tsx": $$$$$$3,
+    "site/sections/Theme/Theme.tsx": $$$$$$4,
   },
   "apps": {
     "site/apps/deco/htmx.ts": $$$$$$$$$$$0,

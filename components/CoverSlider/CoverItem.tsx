@@ -2,9 +2,9 @@ import type { ImageWidget } from "apps/admin/widgets.ts";
 import Image from "apps/website/components/Image.tsx";
 
 /**
- * @title Album Item 2
+ * @title {{title}}
  */
-export interface AlbumProps {
+export interface CoverItemProps {
   cover: {
     source: ImageWidget;
     alt: string;
@@ -14,9 +14,9 @@ export interface AlbumProps {
 }
 
 /**
- * @title Album Item
+ * @title Cover Item
  */
-export default function AlbumItem(props: AlbumProps) {
+export default function CoverItem(props: CoverItemProps) {
   const Wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     if (!props.url) {
       return <>{children}</>;

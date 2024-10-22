@@ -1,0 +1,36 @@
+{
+  "name": "Album Details",
+  "path": "/album/:id",
+  "sections": [
+    {
+      "__resolveType": "site/sections/SeoLoader.tsx",
+      "seoDataLoader": {
+        "__resolveType": "site/loaders/SeoLoader/records/album.ts",
+        "language": "romanji",
+        "slug": {
+          "__resolveType": "website/functions/requestToParam.ts",
+          "param": "id"
+        },
+        "id": {
+          "__resolveType": "website/functions/requestToParam.ts",
+          "param": "id"
+        }
+      }
+    },
+    {
+      "__resolveType": "site/sections/AlbumInfo.tsx",
+      "data": {
+        "__resolveType": "site/loaders/AlbumInfo/records.ts",
+        "titleLanguage": "romanji",
+        "id": {
+          "__resolveType": "website/functions/requestToParam.ts",
+          "param": "id"
+        }
+      }
+    }
+  ],
+  "seo": {
+    "__resolveType": "website/sections/Seo/SeoV2.tsx"
+  },
+  "__resolveType": "website/pages/Page.tsx"
+}
