@@ -15,7 +15,6 @@ interface Props {
  */
 export default async function loader(props: Props, _req: Request, ctx: AppContext): Promise<AlbumInfoData> {
   const { titleLanguage, id } = props;
-  console.log({ props });
   const titleColumn = getAlbumTitleColumn(titleLanguage);
   const altStr = getAlbumCoverAlt(titleLanguage);
   const drizzle = await ctx.invoke.records.loaders.drizzle();
