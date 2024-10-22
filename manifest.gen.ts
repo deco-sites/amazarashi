@@ -13,7 +13,8 @@ import * as $$$$$$0 from "./sections/AlbumInfo.tsx";
 import * as $$$$$$1 from "./sections/CoverSlider.tsx";
 import * as $$$$$$2 from "./sections/Hero.tsx";
 import * as $$$$$$3 from "./sections/SeoLoader.tsx";
-import * as $$$$$$4 from "./sections/Theme/Theme.tsx";
+import * as $$$$$$4 from "./sections/Spacer.ts";
+import * as $$$$$$5 from "./sections/Theme/Theme.tsx";
 
 const manifest = {
   "loaders": {
@@ -27,7 +28,8 @@ const manifest = {
     "site/sections/CoverSlider.tsx": $$$$$$1,
     "site/sections/Hero.tsx": $$$$$$2,
     "site/sections/SeoLoader.tsx": $$$$$$3,
-    "site/sections/Theme/Theme.tsx": $$$$$$4,
+    "site/sections/Spacer.ts": $$$$$$4,
+    "site/sections/Theme/Theme.tsx": $$$$$$5,
   },
   "apps": {
     "site/apps/deco/htmx.ts": $$$$$$$$$$$0,

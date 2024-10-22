@@ -27,6 +27,11 @@
           "param": "id"
         }
       }
+    },
+    {
+      "__resolveType": "site/sections/Spacer.ts",
+      "desktop": 40,
+      "mobile": 20
     }
   ],
   "seo": {
