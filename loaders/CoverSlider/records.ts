@@ -10,9 +10,7 @@ interface Props {
   albumPath: string;
 }
 
-/**
- * @title Albums Records Loader
- */
+/** @title Albums Records Loader */
 export default async function loader(props: Props, _req: Request, ctx: FinalAppContext): Promise<CoverItemProps[]> {
   const { language, maxItems, albumPath } = props;
 

@@ -10,9 +10,7 @@ interface Props {
   id: RequestURLParam;
 }
 
-/**
- * @title Album Info Records Loader
- */
+/** @title Album Info Records Loader */
 export default async function loader(props: Props, _req: Request, ctx: FinalAppContext): Promise<AlbumInfoData> {
   const { titleLanguage, id } = props;
   const titleColumn = getAlbumTitleColumn(titleLanguage);
@@ -34,6 +32,12 @@ export default async function loader(props: Props, _req: Request, ctx: FinalAppC
     .from(albuns)
     .where(eq(albuns.id, id))
     .limit(1);
+
+  if (!album) {
+    ctx.response.status = 307;
+    ctx.response.headers.append("location", "/404");
+    throw new Error(`Album not found: ${id}`);
+  }
 
   return {
     ...album,

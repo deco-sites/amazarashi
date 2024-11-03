@@ -142,17 +142,16 @@
   }
 
   .bottomAnimationFadIn {
-    animation: bottomAnimationFadIn 0.5s ease;
     opacity: 0;
+    animation-name: bottomAnimationFadIn;
+    animation-timing-function: ease;
+    animation-duration: 0.5s;
     animation-fill-mode: forwards;
-    animation-delay: 1s;
     animation-delay: 0.5s;
     transform: translateY(calc((100% + 1.5rem) * -1));
     @screen lg {
       transform: translateY(calc(100% + 9rem));
-      animation: bottomAnimationFadInLg 0.5s ease;
-      animation-delay: 0.5s;
-      animation-fill-mode: forwards;
+      animation-name: bottomAnimationFadInLg;
     }
   }
 
@@ -181,7 +180,6 @@
     position: relative;
     overflow: hidden;
   }
-
   .bottomAnimatedGradient::before {
     content: "";
     position: absolute;
@@ -192,17 +190,39 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(0deg, rgba(23, 23, 23, 1) 10%, rgba(255, 255, 255, 0) 100%);
-    animation: bottomAnimatedGradient 1s ease;
+    z-index: 2;
+    animation-name: bottomAnimatedGradient;
+    animation-timing-function: ease;
+    animation-duration: 0.5s;
     animation-fill-mode: forwards;
     animation-delay: 0.5s;
-    z-index: 2;
   }
+
   @keyframes bottomAnimatedGradient {
     0% {
       top: 100%;
     }
     100% {
       top: 0;
+    }
+  }
+
+  .awaitBottomAnimationFadInEnd,
+  .awaitBottomAnimatedGradientEnd {
+    opacity: 0;
+    animation-name: awaitAnimationEnd;
+    animation-timing-function: ease;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+  }
+
+  @keyframes awaitAnimationEnd {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 }

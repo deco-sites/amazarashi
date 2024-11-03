@@ -16,8 +16,9 @@ import * as $$$$$$2 from "./sections/Hero.tsx";
 import * as $$$$$$3 from "./sections/MenuDemo.tsx";
 import * as $$$$$$4 from "./sections/MusicList.tsx";
 import * as $$$$$$5 from "./sections/SeoLoader.tsx";
-import * as $$$$$$6 from "./sections/Spacer.ts";
-import * as $$$$$$7 from "./sections/Theme/Theme.tsx";
+import * as $$$$$$6 from "./sections/ShowBeforeAnimation.tsx";
+import * as $$$$$$7 from "./sections/Spacer.ts";
+import * as $$$$$$8 from "./sections/Theme/Theme.tsx";
 
 const manifest = {
   "loaders": {
@@ -34,8 +35,9 @@ const manifest = {
     "site/sections/MenuDemo.tsx": $$$$$$3,
     "site/sections/MusicList.tsx": $$$$$$4,
     "site/sections/SeoLoader.tsx": $$$$$$5,
-    "site/sections/Spacer.ts": $$$$$$6,
-    "site/sections/Theme/Theme.tsx": $$$$$$7,
+    "site/sections/ShowBeforeAnimation.tsx": $$$$$$6,
+    "site/sections/Spacer.ts": $$$$$$7,
+    "site/sections/Theme/Theme.tsx": $$$$$$8,
   },
   "apps": {
     "site/apps/deco/htmx.ts": $$$$$$$$$$$0,

@@ -10,9 +10,7 @@ interface Props {
   language: LanguagesTitles;
 }
 
-/**
- * @title Records Album Seo Loader
- */
+/** @title Records Album Seo Loader */
 export default async function loader(props: Props, _req: Request, ctx: FinalAppContext): Promise<SEOProps> {
   const { id, language } = props;
   const seo = ctx.seo ?? {};

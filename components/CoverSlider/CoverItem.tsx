@@ -1,9 +1,7 @@
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import Image from "apps/website/components/Image.tsx";
 
-/**
- * @title {{title}}
- */
+/** @title {{title}} */
 export interface CoverItemProps {
   cover: {
     source: ImageWidget;
@@ -13,9 +11,7 @@ export interface CoverItemProps {
   url?: string;
 }
 
-/**
- * @title Cover Item
- */
+/** @title Cover Item */
 export default function CoverItem(props: CoverItemProps) {
   const Wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     if (!props.url) {
@@ -26,9 +22,17 @@ export default function CoverItem(props: CoverItemProps) {
   const Content = () => (
     <>
       <div className="overflow-hidden">
-        <Image src={props.cover.source} alt={props.cover.alt} width={600} height={600} className="group-hover:scale-110 transition-all" />
+        <Image
+          src={props.cover.source}
+          alt={props.cover.alt}
+          width={600}
+          height={600}
+          className="group-hover:scale-110 transition-all"
+        />
       </div>
-      <h3 className="whitespace-break-spaces mt-5 lg:text-[26px]">{props.title}</h3>
+      <h3 className="whitespace-break-spaces mt-5 lg:text-[26px]">
+        {props.title}
+      </h3>
     </>
   );
 
