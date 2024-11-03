@@ -11,3 +11,25 @@ export const albuns = sqliteTable("albuns", {
     mode: "timestamp",
   }).notNull(),
 });
+
+export const musics = sqliteTable("musics", {
+  id: text("id").primaryKey(),
+  nameRomaji: text("name_romanji").notNull(),
+  nameHiragana: text("name_hiragana").notNull(),
+  nameEnglish: text("name_english").notNull(),
+  namePortuguese: text("name_portuguese").notNull(),
+  duration: integer("duration").notNull(),
+  youtubeVideo: text("youtube_video"),
+  youtubeMusicId: text("youtube_music_id"),
+  spotifyId: text("spotify_id"),
+});
+
+export const musics_albums = sqliteTable("musics_albums", {
+  musicId: text("music_id")
+    .references(() => musics.id)
+    .notNull(),
+  albumId: text("album_id")
+    .references(() => albuns.id)
+    .notNull(),
+  position: integer("position").notNull(),
+});

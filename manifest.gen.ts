@@ -7,29 +7,35 @@ import * as $$$$$$$$$$$1 from "./apps/deco/records.ts";
 import * as $$$$$$$$$$$2 from "./apps/site.ts";
 import * as $$$0 from "./loaders/AlbumInfo/records.ts";
 import * as $$$1 from "./loaders/CoverSlider/records.ts";
-import * as $$$2 from "./loaders/SeoLoader/records/album.ts";
-import * as $$$3 from "./loaders/utils/languagesTitles.ts";
+import * as $$$2 from "./loaders/MusicList/recordsAlbuns.ts";
+import * as $$$3 from "./loaders/SeoLoader/records/album.ts";
+import * as $$$4 from "./loaders/utils/languagesTitles.ts";
 import * as $$$$$$0 from "./sections/AlbumInfo.tsx";
 import * as $$$$$$1 from "./sections/CoverSlider.tsx";
 import * as $$$$$$2 from "./sections/Hero.tsx";
-import * as $$$$$$3 from "./sections/SeoLoader.tsx";
-import * as $$$$$$4 from "./sections/Spacer.ts";
-import * as $$$$$$5 from "./sections/Theme/Theme.tsx";
+import * as $$$$$$3 from "./sections/MenuDemo.tsx";
+import * as $$$$$$4 from "./sections/MusicList.tsx";
+import * as $$$$$$5 from "./sections/SeoLoader.tsx";
+import * as $$$$$$6 from "./sections/Spacer.ts";
+import * as $$$$$$7 from "./sections/Theme/Theme.tsx";
 
 const manifest = {
   "loaders": {
     "site/loaders/AlbumInfo/records.ts": $$$0,
     "site/loaders/CoverSlider/records.ts": $$$1,
-    "site/loaders/SeoLoader/records/album.ts": $$$2,
-    "site/loaders/utils/languagesTitles.ts": $$$3,
+    "site/loaders/MusicList/recordsAlbuns.ts": $$$2,
+    "site/loaders/SeoLoader/records/album.ts": $$$3,
+    "site/loaders/utils/languagesTitles.ts": $$$4,
   },
   "sections": {
     "site/sections/AlbumInfo.tsx": $$$$$$0,
     "site/sections/CoverSlider.tsx": $$$$$$1,
     "site/sections/Hero.tsx": $$$$$$2,
-    "site/sections/SeoLoader.tsx": $$$$$$3,
-    "site/sections/Spacer.ts": $$$$$$4,
-    "site/sections/Theme/Theme.tsx": $$$$$$5,
+    "site/sections/MenuDemo.tsx": $$$$$$3,
+    "site/sections/MusicList.tsx": $$$$$$4,
+    "site/sections/SeoLoader.tsx": $$$$$$5,
+    "site/sections/Spacer.ts": $$$$$$6,
+    "site/sections/Theme/Theme.tsx": $$$$$$7,
   },
   "apps": {
     "site/apps/deco/htmx.ts": $$$$$$$$$$$0,
