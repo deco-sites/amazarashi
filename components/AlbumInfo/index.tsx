@@ -33,7 +33,7 @@ export default function AlbumInfo(props: AlbumInfoProps) {
         <Icon id="ArrowBack" size={24} strokeWidth={2} />
         <span>Voltar</span>
       </BackButton>
-      <div className="flex justify-between items-end bottomAnimationFadIn flex-col-reverse lg:flex-row gap-3">
+      <div className="flex justify-between items-center lg:items-end bottomAnimationFadIn flex-col-reverse lg:flex-row gap-3">
         <div>
           <h1>Informações do Album:</h1>
           <h2 className="mb-4">{title}</h2>
@@ -49,7 +49,13 @@ export default function AlbumInfo(props: AlbumInfoProps) {
             <strong>Data de Lançamento:</strong> {formattedReleaseDate}
           </p>
         </div>
-        <Image src={cover.url} alt={cover.alt} width={500} preload height={500} />
+        <Image
+          src={cover.url}
+          alt={cover.alt}
+          width={500}
+          preload
+          height={500}
+        />
       </div>
     </div>
   );

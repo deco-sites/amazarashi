@@ -10,7 +10,7 @@ type RecordsApp = ReturnType<typeof records>;
  * @category Tool
  * @logo https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/1/0ac02239-61e6-4289-8a36-e78c0975bcc8
  */
-export default function Site(state: Props): App<Manifest, Props, [WebsiteApp, RecordsApp]> {
+export default function Site(state: Props): App<Manifest, Props, [WebsiteApp]> {
   return {
     state,
     manifest,
@@ -20,3 +20,6 @@ export default function Site(state: Props): App<Manifest, Props, [WebsiteApp, Re
 export type SiteApp = ReturnType<typeof Site>;
 export type AppContext = AC<SiteApp>;
 export { onBeforeResolveProps, Preview } from "apps/website/mod.ts";
+
+export type FinalAppContext = AC<App<Manifest, Props, [WebsiteApp, RecordsApp]>>;
+const a: FinalAppContext = {} as any;

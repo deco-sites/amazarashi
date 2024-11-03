@@ -1,5 +1,5 @@
 import { desc, sql } from "drizzle-orm";
-import { AppContext } from "site/apps/site.ts";
+import { FinalAppContext } from "site/apps/site.ts";
 import { CoverItemProps } from "site/components/CoverSlider/CoverItem.tsx";
 import { albuns } from "site/db/schema.ts";
 import { LanguagesTitles, getAlbumCoverAlt, getAlbumTitleColumn } from "site/loaders/utils/languagesTitles.ts";
@@ -13,7 +13,7 @@ interface Props {
 /**
  * @title Albums Records Loader
  */
-export default async function loader(props: Props, _req: Request, ctx: AppContext): Promise<CoverItemProps[]> {
+export default async function loader(props: Props, _req: Request, ctx: FinalAppContext): Promise<CoverItemProps[]> {
   const { language, maxItems, albumPath } = props;
 
   const titleColumn = getAlbumTitleColumn(language);

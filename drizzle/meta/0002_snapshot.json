@@ -1,8 +1,8 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "00600a87-0ad5-4464-8899-4a7450bf401f",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "1a4d1619-9914-403a-a155-de72d6fa9d30",
+  "prevId": "c189fb4a-aff5-479a-9ab0-690cd89cfb72",
   "tables": {
     "albuns": {
       "name": "albuns",
@@ -106,6 +106,27 @@
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
+        },
+        "youtube_video": {
+          "name": "youtube_video",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "youtube_music_id": {
+          "name": "youtube_music_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "spotify_id": {
+          "name": "spotify_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
         }
       },
       "indexes": {},
@@ -126,6 +147,13 @@
         "album_id": {
           "name": "album_id",
           "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "position": {
+          "name": "position",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false

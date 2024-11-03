@@ -32,6 +32,16 @@
       "__resolveType": "site/sections/Spacer.ts",
       "desktop": 40,
       "mobile": 20
+    },
+    {
+      "__resolveType": "site/sections/MusicList.tsx",
+      "musics": {
+        "__resolveType": "site/loaders/MusicList/recordsAlbuns.ts",
+        "albumId": {
+          "__resolveType": "website/functions/requestToParam.ts",
+          "param": "id"
+        }
+      }
     }
   ],
   "seo": {
