@@ -3,11 +3,13 @@ import { eq, sql } from "drizzle-orm";
 import { FinalAppContext } from "site/apps/site.ts";
 import { MusicListItem } from "site/components/MusicList/index.tsx";
 import { musics, musics_albums } from "site/db/schema.ts";
+
 interface LoaderProps {
   /** @title Album ID */
   albumId: string | RequestURLParam;
 }
 
+/** @title Music List Records Loader */
 export default async function loader(props: LoaderProps, _req: Request, ctx: FinalAppContext): Promise<MusicListItem[]> {
   const { albumId } = props;
   const drizzle = await ctx.invoke.records.loaders.drizzle();

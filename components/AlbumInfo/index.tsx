@@ -21,6 +21,7 @@ export interface AlbumInfoProps {
   data: AlbumInfoData;
 }
 
+/** @title Album Info */
 export default function AlbumInfo(props: AlbumInfoProps) {
   const {
     data: { title, romanji, hiragana, english, portuguese, releaseDate, cover },
@@ -55,6 +56,7 @@ export default function AlbumInfo(props: AlbumInfoProps) {
           width={500}
           preload
           height={500}
+          fetchPriority="high"
         />
       </div>
     </div>
