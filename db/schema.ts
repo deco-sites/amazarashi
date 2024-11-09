@@ -22,6 +22,7 @@ export const musics = sqliteTable("musics", {
   youtubeVideo: text("youtube_video"),
   youtubeMusicId: text("youtube_music_id"),
   spotifyId: text("spotify_id"),
+  coverUrl: text("cover_url").notNull(),
 });
 
 export const musics_albums = sqliteTable("musics_albums", {
