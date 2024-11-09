@@ -20,4 +20,4 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deco Deploy
-        uses: ./github/workflows/deco-deno2-deploy.yaml
+        uses: ./.github/workflows/deco-deno2-deploy.yaml
