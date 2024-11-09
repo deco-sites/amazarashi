@@ -5,6 +5,31 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+branding:
+  icon: "arrow-right-circle"
+  color: "gray-dark"
+inputs:
+  entrypoint:
+    description: "The application entrypoint, defaults to main.ts"
+    required: false
+    default: "./main.ts"
+  site:
+    description: "The site name"
+    required: false
+    default: ${{ github.event.repository.name }}
+  skip_build:
+    description: "If build should be skipped"
+    required: false
+    default: "false"
+  build_cmd:
+    description: "The build cmd that should be used."
+    required: false
+    default: "deno run -A dev.ts build"
+  exclude:
+    description: "Folders/files to exclude for deploying"
+    required: false
+    default: "node_modules"
+
 
 jobs:
   deploy:
@@ -19,5 +44,37 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v3
 
-      - name: Deco Deploy
-        uses: ./.github/workflows/deco-deno2-deploy.yaml
+      - name: Install Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v2.x
+      
+      - uses: actions/cache@v3
+        if: ${{ inputs.skip_build == 'false' }}
+        with:
+          path: |
+            ~/.deno
+            ~/.cache/deno
+          key: ${{ runner.os }}-deno-${{ hashFiles('deno.lock', '**/deps.ts', 'deno.json', 'import_map.json') }}
+
+      - name: Build step
+        shell: bash
+        if: ${{ inputs.skip_build == 'false' }}
+        run: ${{ inputs.build_cmd }}
+      
+      - name: Clean unnecessary files
+        shell: bash
+        run: |
+          rm -rf node_modules
+          rm -rf .git
+          rm -rf .gitattributes
+          rm -rf CHANGELOG.md
+          rm -rf README.md
+          rm -rf .vscode
+      
+      - name: Upload to Deno Deploy
+        uses: denoland/deployctl@v1
+        with:
+          project: "deco-sites-${{ inputs.site }}"
+          entrypoint: ${{ inputs.entrypoint }}
+          exclude: ${{ inputs.exclude }}
