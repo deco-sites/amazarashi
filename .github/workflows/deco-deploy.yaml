@@ -5,32 +5,33 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-branding:
-  icon: "arrow-right-circle"
-  color: "gray-dark"
-inputs:
-  entrypoint:
-    description: "The application entrypoint, defaults to main.ts"
-    required: false
-    default: "./main.ts"
-  site:
-    description: "The site name"
-    required: false
-    default: ${{ github.event.repository.name }}
-  skip_build:
-    description: "If build should be skipped"
-    required: false
-    default: "false"
-  build_cmd:
-    description: "The build cmd that should be used."
-    required: false
-    default: "deno run -A dev.ts build"
-  exclude:
-    description: "Folders/files to exclude for deploying"
-    required: false
-    default: "node_modules"
-
-
+  workflow_call: 
+    inputs:
+      entrypoint:
+        description: "The application entrypoint, defaults to main.ts"
+        required: false
+        default: "./main.ts"
+        type: string
+      site:
+        description: "The site name"
+        required: false
+        default: ${{ github.event.repository.name }}
+        type: string
+      skip_build:
+        description: "If build should be skipped"
+        required: false
+        default: "false"
+        type: string
+      build_cmd:
+        description: "The build cmd that should be used."
+        required: false
+        default: "deno run -A dev.ts build"
+        type: string
+      exclude:
+        description: "Folders/files to exclude for deploying"
+        required: false
+        default: "node_modules"
+        type: string
 jobs:
   deploy:
     name: Deploy
