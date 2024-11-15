@@ -34,3 +34,9 @@ export const musics_albums = sqliteTable("musics_albums", {
     .notNull(),
   position: integer("position").notNull(),
 });
+
+export const sessions = sqliteTable("sessions", {
+  id: text("id").primaryKey(),
+  token: text("token").notNull(),
+  expiration: integer("expiration").notNull(),
+});

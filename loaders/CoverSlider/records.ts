@@ -2,7 +2,7 @@ import { desc, sql } from "drizzle-orm";
 import { FinalAppContext } from "site/apps/site.ts";
 import { CoverItemProps } from "site/components/CoverSlider/CoverItem.tsx";
 import { albuns } from "site/db/schema.ts";
-import { LanguagesTitles, getAlbumCoverAlt, getAlbumTitleColumn } from "site/loaders/utils/languagesTitles.ts";
+import { LanguagesTitles, getAlbumCoverAlt, getAlbumTitleColumn } from "site/utils/languagesTitles.ts";
 
 interface Props {
   language: LanguagesTitles;

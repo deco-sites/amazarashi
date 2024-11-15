@@ -3,7 +3,7 @@ import { eq, sql } from "drizzle-orm";
 import { FinalAppContext } from "site/apps/site.ts";
 import { AlbumInfoData } from "site/components/AlbumInfo/index.tsx";
 import { albuns } from "site/db/schema.ts";
-import { getAlbumCoverAlt, getAlbumTitleColumn, LanguagesTitles } from "site/loaders/utils/languagesTitles.ts";
+import { getAlbumCoverAlt, getAlbumTitleColumn, LanguagesTitles } from "site/utils/languagesTitles.ts";
 
 interface Props {
   titleLanguage: LanguagesTitles;
