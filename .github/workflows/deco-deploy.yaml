@@ -5,6 +5,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+
 jobs:
   deploy:
     name: Deploy
@@ -13,40 +14,12 @@ jobs:
     permissions:
       id-token: write # Needed for auth with Deno Deploy
       contents: read # Needed to clone the repository
-    
+
     steps:
       - name: Clone repository
         uses: actions/checkout@v3
 
-      - name: Install Deno
-        uses: denoland/setup-deno@v1
+      - name: Deco Deploy
+        uses: gsbenevides2/deploy@v1
         with:
-          deno-version: v2.x
-      
-      - uses: actions/cache@v3
-        with:
-          path: |
-            ~/.deno
-            ~/.cache/deno
-          key: ${{ runner.os }}-deno-${{ hashFiles('deno.lock', '**/deps.ts', 'deno.json', 'import_map.json') }}
-
-      - name: Build step
-        shell: bash
-        run: "deno run -A dev.ts build"
-      
-      - name: Clean unnecessary files
-        shell: bash
-        run: |
-          rm -rf node_modules
-          rm -rf .git
-          rm -rf .gitattributes
-          rm -rf CHANGELOG.md
-          rm -rf README.md
-          rm -rf .vscode
-      
-      - name: Upload to Deno Deploy
-        uses: denoland/deployctl@v1
-        with:
-          project: "deco-sites-${{ github.event.repository.name }}"
-          entrypoint: "./main.ts"
-          exclude: "node_modules"
+          deno_version: "v2.x"
