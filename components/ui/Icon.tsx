@@ -37,7 +37,9 @@ export type AvailableIcons =
   | "ArrowsPointingOut"
   | "ArrowBack"
   | "Spotify"
-  | "YoutubeMusic";
+  | "YoutubeMusic"
+  | "music_album"
+  | "music_disc";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**

@@ -18,8 +18,5 @@ export default function Site(state: Props): App<Manifest, Props, [WebsiteApp]> {
   };
 }
 export type SiteApp = ReturnType<typeof Site>;
-export type AppContext = AC<SiteApp>;
+export type AppContext = AC<App<Manifest, Props, [WebsiteApp, RecordsApp]>>;
 export { onBeforeResolveProps, Preview } from "apps/website/mod.ts";
-
-export type FinalAppContext = AC<App<Manifest, Props, [WebsiteApp, RecordsApp]>>;
-const a: FinalAppContext = {} as any;

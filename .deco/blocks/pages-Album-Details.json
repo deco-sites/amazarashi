@@ -1,6 +1,10 @@
 {
   "name": "Album Details",
   "path": "/album/:id",
+  "__resolveType": "website/pages/Page.tsx",
+  "seo": {
+    "__resolveType": "website/sections/Seo/SeoV2.tsx"
+  },
   "sections": [
     {
       "__resolveType": "site/sections/SeoLoader.tsx",
@@ -47,9 +51,5 @@
         }
       }
     }
-  ],
-  "seo": {
-    "__resolveType": "website/sections/Seo/SeoV2.tsx"
-  },
-  "__resolveType": "website/pages/Page.tsx"
+  ]
 }

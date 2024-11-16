@@ -84,7 +84,7 @@ export default function AdminLogin(props: AdminLoginProps) {
                 </div>
                 <div>
                     <div className="label">
-                        <label htmlFor="password" className="text-label">
+                        <label htmlFor="password" className="label-text">
                             Senha:
                         </label>
                     </div>

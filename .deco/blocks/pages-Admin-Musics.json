@@ -1,0 +1,14 @@
+{
+  "name": "Admin Musics",
+  "path": "/admin/musics",
+  "__resolveType": "website/pages/Page.tsx",
+  "seo": {
+    "__resolveType": "website/sections/Seo/SeoV2.tsx",
+    "title": "Musics Admin"
+  },
+  "sections": [
+    {
+      "__resolveType": "site/sections/AdminMusics.tsx"
+    }
+  ]
+}

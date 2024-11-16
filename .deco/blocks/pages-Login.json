@@ -1,5 +1,10 @@
 {
+  "name": "Login",
   "path": "/admin/login",
+  "__resolveType": "website/pages/Page.tsx",
+  "seo": {
+    "__resolveType": "website/sections/Seo/SeoV2.tsx"
+  },
   "sections": [
     {
       "__resolveType": "site/sections/AdminLogin.tsx",
@@ -10,10 +15,5 @@
       },
       "username": "gsbenevides2"
     }
-  ],
-  "seo": {
-    "__resolveType": "website/sections/Seo/SeoV2.tsx"
-  },
-  "__resolveType": "website/pages/Page.tsx",
-  "name": "Login"
+  ]
 }
