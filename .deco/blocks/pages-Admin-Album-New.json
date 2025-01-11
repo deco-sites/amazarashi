@@ -1,14 +1,14 @@
 {
-  "name": "Admin Albums",
-  "path": "/admin/albums",
+  "name": "Admin Album New",
+  "path": "/admin/album/new",
   "__resolveType": "website/pages/Page.tsx",
   "seo": {
     "__resolveType": "website/sections/Seo/SeoV2.tsx",
-    "title": "Albums Admin"
+    "title": "New Album Admin"
   },
   "sections": [
     {
-      "__resolveType": "site/sections/AdminAlbums.tsx"
+      "__resolveType": "site/sections/AdminAlbumNew.tsx"
     }
   ]
 }

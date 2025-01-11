@@ -24,12 +24,7 @@ export async function action(
     const formData = await req.formData();
     const typedUsername = formData.get("username")?.toString();
     const typedPassword = formData.get("password")?.toString();
-    console.log({
-        typedUsername,
-        typedPassword,
-        correctUsername,
-        correctPassword,
-    });
+
     if (
         typedUsername !== correctUsername || typedPassword !== correctPassword
     ) {

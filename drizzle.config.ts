@@ -1,4 +1,3 @@
-
 import { defineConfig } from "drizzle-kit";
 
 // Code from deno std/fmt that can't be improted https://deno.land/std@0.224.0/fmt/colors.ts?source
@@ -40,15 +39,9 @@ function brightGreen(str: string): string {
 const authToken = Deno.env.get("DATABASE_AUTH_TOKEN");
 
 if (!authToken) {
-  const link = brightGreen(
-    `https://admin.deco.cx/sites/${
-      Deno.env.get("DECO_SITE_NAME")
-    }/spaces/Settings`,
-  );
+  const link = brightGreen(`https://admin.deco.cx/sites/${Deno.env.get("DECO_SITE_NAME")}/spaces/Settings`);
 
-  console.log(
-    `Token not setted up. Open ${link} to get database credentials.`,
-  );
+  console.log(`Token not setted up. Open ${link} to get database credentials.`);
 }
 
 const dbCredentials = {

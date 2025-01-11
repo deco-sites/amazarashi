@@ -12,20 +12,23 @@ import * as $$$3 from "./loaders/MusicData/records.ts";
 import * as $$$4 from "./loaders/MusicHero/records.ts";
 import * as $$$5 from "./loaders/MusicList/recordsAlbuns.ts";
 import * as $$$6 from "./loaders/SeoLoader/records/album.ts";
-import * as $$$$$$0 from "./sections/AdminLogin.tsx";
-import * as $$$$$$1 from "./sections/AdminMenu.tsx";
-import * as $$$$$$2 from "./sections/AdminMusics.tsx";
-import * as $$$$$$3 from "./sections/AlbumInfo.tsx";
-import * as $$$$$$4 from "./sections/CoverSlider.tsx";
-import * as $$$$$$5 from "./sections/Hero.tsx";
-import * as $$$$$$6 from "./sections/MenuDemo.tsx";
-import * as $$$$$$7 from "./sections/MusicData.tsx";
-import * as $$$$$$8 from "./sections/MusicHero.tsx";
-import * as $$$$$$9 from "./sections/MusicList.tsx";
-import * as $$$$$$10 from "./sections/SeoLoader.tsx";
-import * as $$$$$$11 from "./sections/ShowBeforeAnimation.tsx";
-import * as $$$$$$12 from "./sections/Spacer.ts";
-import * as $$$$$$13 from "./sections/Theme/Theme.tsx";
+import * as $$$$$$0 from "./sections/AdminAlbumNew.tsx";
+import * as $$$$$$1 from "./sections/AdminAlbums.tsx";
+import * as $$$$$$2 from "./sections/AdminLogin.tsx";
+import * as $$$$$$3 from "./sections/AdminMenu.tsx";
+import * as $$$$$$4 from "./sections/AdminMusics.tsx";
+import * as $$$$$$5 from "./sections/AlbumInfo.tsx";
+import * as $$$$$$6 from "./sections/Component.tsx";
+import * as $$$$$$7 from "./sections/CoverSlider.tsx";
+import * as $$$$$$8 from "./sections/Hero.tsx";
+import * as $$$$$$9 from "./sections/MenuDemo.tsx";
+import * as $$$$$$10 from "./sections/MusicData.tsx";
+import * as $$$$$$11 from "./sections/MusicHero.tsx";
+import * as $$$$$$12 from "./sections/MusicList.tsx";
+import * as $$$$$$13 from "./sections/SeoLoader.tsx";
+import * as $$$$$$14 from "./sections/ShowBeforeAnimation.tsx";
+import * as $$$$$$15 from "./sections/Spacer.ts";
+import * as $$$$$$16 from "./sections/Theme/Theme.tsx";
 
 const manifest = {
   "loaders": {
@@ -38,20 +41,23 @@ const manifest = {
     "site/loaders/SeoLoader/records/album.ts": $$$6,
   },
   "sections": {
-    "site/sections/AdminLogin.tsx": $$$$$$0,
-    "site/sections/AdminMenu.tsx": $$$$$$1,
-    "site/sections/AdminMusics.tsx": $$$$$$2,
-    "site/sections/AlbumInfo.tsx": $$$$$$3,
-    "site/sections/CoverSlider.tsx": $$$$$$4,
-    "site/sections/Hero.tsx": $$$$$$5,
-    "site/sections/MenuDemo.tsx": $$$$$$6,
-    "site/sections/MusicData.tsx": $$$$$$7,
-    "site/sections/MusicHero.tsx": $$$$$$8,
-    "site/sections/MusicList.tsx": $$$$$$9,
-    "site/sections/SeoLoader.tsx": $$$$$$10,
-    "site/sections/ShowBeforeAnimation.tsx": $$$$$$11,
-    "site/sections/Spacer.ts": $$$$$$12,
-    "site/sections/Theme/Theme.tsx": $$$$$$13,
+    "site/sections/AdminAlbumNew.tsx": $$$$$$0,
+    "site/sections/AdminAlbums.tsx": $$$$$$1,
+    "site/sections/AdminLogin.tsx": $$$$$$2,
+    "site/sections/AdminMenu.tsx": $$$$$$3,
+    "site/sections/AdminMusics.tsx": $$$$$$4,
+    "site/sections/AlbumInfo.tsx": $$$$$$5,
+    "site/sections/Component.tsx": $$$$$$6,
+    "site/sections/CoverSlider.tsx": $$$$$$7,
+    "site/sections/Hero.tsx": $$$$$$8,
+    "site/sections/MenuDemo.tsx": $$$$$$9,
+    "site/sections/MusicData.tsx": $$$$$$10,
+    "site/sections/MusicHero.tsx": $$$$$$11,
+    "site/sections/MusicList.tsx": $$$$$$12,
+    "site/sections/SeoLoader.tsx": $$$$$$13,
+    "site/sections/ShowBeforeAnimation.tsx": $$$$$$14,
+    "site/sections/Spacer.ts": $$$$$$15,
+    "site/sections/Theme/Theme.tsx": $$$$$$16,
   },
   "apps": {
     "site/apps/deco/htmx.ts": $$$$$$$$$$$0,

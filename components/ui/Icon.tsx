@@ -39,7 +39,9 @@ export type AvailableIcons =
   | "Spotify"
   | "YoutubeMusic"
   | "music_album"
-  | "music_disc";
+  | "music_disc"
+  | "pencil"
+  | "view";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**

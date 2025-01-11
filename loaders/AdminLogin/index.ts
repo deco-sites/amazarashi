@@ -24,12 +24,11 @@ export default async function loader(_props: unknown, req: Request, ctx: AppCont
     ctx.response.status = 302;
     return;
   }
-  console.log(session);
   const findedSession = await drizzle
     .select()
     .from(sessions)
     .where(and(eq(sessions.token, session), gt(sessions.expiration, Date.now())));
-  console.log(findedSession);
+
   if (findedSession.length === 0) {
     ctx.response.headers.set("location", "/admin/login");
     ctx.response.headers.set("Set-Cookie", "session=; HttpOnly; Path=/; Max-Age=0");
