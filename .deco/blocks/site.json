@@ -38,7 +38,14 @@
     },
     "includeScriptsToBody": {
       "includes": []
-    }
+    },
+    "enabled": true,
+    "name": "Teste Bene",
+    "matcher": {
+      "__resolveType": "website/matchers/random.ts",
+      "traffic": 50
+    },
+    "urlToRunAgainst": "gui.dev.br"
   },
   "flavor": {
     "framework": "fresh"
