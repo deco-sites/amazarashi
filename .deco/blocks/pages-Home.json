@@ -41,7 +41,7 @@
         "__resolveType": "site/loaders/CoverSlider/records.ts",
         "language": "romanji",
         "albumPath": "/album/",
-        "maxItems": 10
+        "maxItems": 20
       }
     }
   ]

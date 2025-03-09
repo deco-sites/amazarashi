@@ -5,5 +5,17 @@
     "__resolveType": "website/sections/Seo/SeoV2.tsx"
   },
   "__resolveType": "website/pages/Page.tsx",
-  "sections": []
+  "sections": [
+    {
+      "__resolveType": "site/sections/MusicInfo.tsx",
+      "data": {
+        "__resolveType": "site/loaders/MusicInfo/records.ts",
+        "titleLanguage": "romanji",
+        "id": {
+          "__resolveType": "website/functions/requestToParam.ts",
+          "param": "id"
+        }
+      }
+    }
+  ]
 }

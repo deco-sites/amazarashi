@@ -1,7 +1,9 @@
 import { type AppContext as AC, type App } from "@deco/deco";
+import type { Manifest as ManifestRecords } from "apps/records/manifest.gen.ts";
 import website, { Props } from "apps/website/mod.ts";
 import records from "site/apps/deco/records.ts";
 import manifest, { Manifest } from "../manifest.gen.ts";
+
 type WebsiteApp = ReturnType<typeof website>;
 type RecordsApp = ReturnType<typeof records>;
 /**
@@ -17,6 +19,8 @@ export default function Site(state: Props): App<Manifest, Props, [WebsiteApp]> {
     dependencies: [website(state)],
   };
 }
+
 export type SiteApp = ReturnType<typeof Site>;
-export type AppContext = AC<App<Manifest, Props, [WebsiteApp, RecordsApp]>>;
+export type UniqueManifest = Manifest & ManifestRecords;
+export type AppContext = AC<App<UniqueManifest, Props, [WebsiteApp, RecordsApp]>>;
 export { onBeforeResolveProps, Preview } from "apps/website/mod.ts";

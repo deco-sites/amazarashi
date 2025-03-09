@@ -1,1 +1,0 @@
-ALTER TABLE `musics` ADD `cover_url` text;

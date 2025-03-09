@@ -1,3 +1,4 @@
+import { sql } from "drizzle-orm";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const albuns = sqliteTable("albuns", {
@@ -23,6 +24,12 @@ export const musics = sqliteTable("musics", {
   youtubeMusicId: text("youtube_music_id"),
   spotifyId: text("spotify_id"),
   coverUrl: text("cover_url").notNull(),
+  description: text("description"),
+  releaseDate: integer("release_date", {
+    mode: "timestamp",
+  })
+    .notNull()
+    .default(sql`(unixepoch())`),
 });
 
 export const musics_albums = sqliteTable("musics_albums", {
@@ -33,10 +40,4 @@ export const musics_albums = sqliteTable("musics_albums", {
     .references(() => albuns.id)
     .notNull(),
   position: integer("position").notNull(),
-});
-
-export const sessions = sqliteTable("sessions", {
-  id: text("id").primaryKey(),
-  token: text("token").notNull(),
-  expiration: integer("expiration").notNull(),
 });

@@ -1,6 +1,6 @@
 import { RequestURLParam } from "apps/website/functions/requestToParam.ts";
 import { eq, sql } from "drizzle-orm";
-import { FinalAppContext } from "site/apps/site.ts";
+import { AppContext } from "site/apps/deco/records.ts";
 import { MusicListItem } from "site/components/MusicList/index.tsx";
 import { musics, musics_albums } from "site/db/schema.ts";
 
@@ -10,8 +10,9 @@ interface LoaderProps {
 }
 
 /** @title Music List Records Loader */
-export default async function loader(props: LoaderProps, _req: Request, ctx: FinalAppContext): Promise<MusicListItem[]> {
+export default async function loader(props: LoaderProps, _req: Request, ctx: AppContext): Promise<MusicListItem[]> {
   const { albumId } = props;
+  ctx.invoke;
   const drizzle = await ctx.invoke.records.loaders.drizzle();
 
   const musicsResponse = await drizzle
@@ -21,7 +22,7 @@ export default async function loader(props: LoaderProps, _req: Request, ctx: Fin
       duration: musics.duration,
       youtubeMusicId: musics.youtubeMusicId,
       spotifyId: musics.spotifyId,
-      url: sql<string>`concat('/musics/', ${musics.id})`,
+      url: sql<string>`concat('/music/', ${musics.id})`,
       position: musics_albums.position,
     })
     .from(musics_albums)

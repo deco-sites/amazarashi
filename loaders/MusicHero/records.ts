@@ -1,6 +1,6 @@
 import { RequestURLParam } from "apps/website/functions/requestToParam.ts";
 import { eq } from "drizzle-orm";
-import { AppContext } from "site/apps/site.ts";
+import { AppContext } from "site/apps/deco/records.ts";
 import { MusicHeroData } from "site/components/MusicHero/types.ts";
 import { musics } from "site/db/schema.ts";
 

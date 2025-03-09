@@ -1,8 +1,7 @@
 import daisyui from "daisyui";
-import { Config, PluginCreator } from "./node_modules/tailwindcss/types/config.d.ts";
 
-const TailwindConfig: Config = {
-  plugins: [daisyui as unknown as PluginCreator],
+const TailwindConfig = {
+  plugins: [daisyui],
   daisyui: { themes: [], logs: false },
   content: ["./**/*.tsx"],
   theme: {

@@ -1,9 +1,13 @@
 import { RequestURLParam } from "apps/website/functions/requestToParam.ts";
 import { eq, sql } from "drizzle-orm";
-import { FinalAppContext } from "site/apps/site.ts";
 import { AlbumInfoData } from "site/components/AlbumInfo/index.tsx";
 import { albuns } from "site/db/schema.ts";
-import { getAlbumCoverAlt, getAlbumTitleColumn, LanguagesTitles } from "site/utils/languagesTitles.ts";
+import {
+  getAlbumCoverAlt,
+  getAlbumTitleColumn,
+  LanguagesTitles,
+} from "site/utils/languagesTitles.ts";
+import { AppContext } from "site/apps/site.ts";
 
 interface Props {
   titleLanguage: LanguagesTitles;
@@ -11,7 +15,11 @@ interface Props {
 }
 
 /** @title Album Info Records Loader */
-export default async function loader(props: Props, _req: Request, ctx: FinalAppContext): Promise<AlbumInfoData> {
+export default async function loader(
+  props: Props,
+  _req: Request,
+  ctx: AppContext,
+): Promise<AlbumInfoData> {
   const { titleLanguage, id } = props;
   const titleColumn = getAlbumTitleColumn(titleLanguage);
   const altStr = getAlbumCoverAlt(titleLanguage);
@@ -41,6 +49,8 @@ export default async function loader(props: Props, _req: Request, ctx: FinalAppC
 
   return {
     ...album,
-    releaseDate: Intl.DateTimeFormat("pt-BR").format(album.releaseDate).split("/").reverse().join("-"),
+    releaseDate: Intl.DateTimeFormat("pt-BR").format(album.releaseDate).split(
+      "/",
+    ).reverse().join("-"),
   };
 }
