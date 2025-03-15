@@ -25,7 +25,7 @@ export default function Site(state: Props): App<Manifest, State, [WebsiteApp]> {
   const database = "amazarashi";
 
   const pool = new pg.Pool({
-    connectionString: `postgresql://${user}:${password}@${host}:${port}/${database}`,
+    connectionString: `postgres://${user}:${password}@${host}:${port}/${database}`,
   });
 
   const db = drizzle({ client: pool });
