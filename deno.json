@@ -69,10 +69,20 @@
   "githooks": {
     "pre-commit": "check"
   },
-  "exclude": ["node_modules", "static/", "README.md", "_fresh", "**/_fresh/*", ".deco/**"],
+  "exclude": [
+    "node_modules",
+    "static/",
+    "README.md",
+    "_fresh",
+    "**/_fresh/*",
+    ".deco/**"
+  ],
   "lint": {
     "rules": {
-      "tags": ["fresh", "recommended"]
+      "tags": [
+        "fresh",
+        "recommended"
+      ]
     }
   },
   "nodeModulesDir": "auto",
@@ -80,5 +90,13 @@
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
   },
-  "lock": false
+  "lock": false,
+  "deploy": {
+    "project": "cec63fec-08f4-46ea-b88c-c855ce0c2e8b",
+    "exclude": [
+      "**/node_modules"
+    ],
+    "include": [],
+    "entrypoint": "main.ts"
+  }
 }

@@ -2,6 +2,7 @@ import { type AppContext as AC, type App } from "@deco/deco";
 import type { Manifest as ManifestRecords } from "apps/records/manifest.gen.ts";
 import website, { Props } from "apps/website/mod.ts";
 import { drizzle } from "drizzle-orm/node-postgres";
+import pg from "pg";
 import manifest, { Manifest } from "../manifest.gen.ts";
 
 type WebsiteApp = ReturnType<typeof website>;
@@ -17,7 +18,11 @@ interface State extends Props {
  * @logo https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/1/0ac02239-61e6-4289-8a36-e78c0975bcc8
  */
 export default function Site(state: Props): App<Manifest, State, [WebsiteApp]> {
-  const db = drizzle("postgresql://amazarashi:amazarashi@selfhost.gui.dev.br:5432/amazarashi");
+  const pool = new pg.Pool({
+    connectionString: "postgresql://amazarashi:amazarashi@selfhost.gui.dev.br:5432/amazarashi",
+  });
+
+  const db = drizzle({ client: pool });
   return {
     state: {
       ...state,
