@@ -1,6 +1,6 @@
 import { RequestURLParam } from "apps/website/functions/requestToParam.ts";
 import { eq } from "drizzle-orm";
-import { AppContext } from "site/apps/deco/records.ts";
+import { AppContext } from "site/apps/site.ts";
 import { MusicHeroData } from "site/components/MusicHero/types.ts";
 import { musics } from "site/db/schema.ts";
 
@@ -10,9 +10,8 @@ interface LoaderProps {
 
 export default async function loader(props: LoaderProps, _req: Request, ctx: AppContext): Promise<MusicHeroData> {
   const { musicId } = props;
-  const drizzle = await ctx.invoke.records.loaders.drizzle();
 
-  const [heroData] = await drizzle
+  const [heroData] = await ctx.drizzle
     .select({
       title: musics.nameRomaji,
       subtitle: musics.nameEnglish,

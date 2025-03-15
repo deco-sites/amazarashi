@@ -1,19 +1,20 @@
-import { sql } from "drizzle-orm";
-import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { integer, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 
-export const albuns = sqliteTable("albuns", {
+export const albuns = pgTable("albuns", {
   id: text("id").primaryKey(),
   nameRomaji: text("name_romanji").notNull(),
   nameHiragana: text("name_hiragana").notNull(),
   nameEnglish: text("name_english").notNull(),
   namePortuguese: text("name_portuguese").notNull(),
   image: text("image").notNull(),
-  releaseDate: integer("release_date", {
-    mode: "timestamp",
-  }).notNull(),
+  releaseDate: timestamp("release_date", {
+    withTimezone: true,
+  })
+    .notNull()
+    .defaultNow(),
 });
 
-export const musics = sqliteTable("musics", {
+export const musics = pgTable("musics", {
   id: text("id").primaryKey(),
   nameRomaji: text("name_romanji").notNull(),
   nameHiragana: text("name_hiragana").notNull(),
@@ -25,14 +26,14 @@ export const musics = sqliteTable("musics", {
   spotifyId: text("spotify_id"),
   coverUrl: text("cover_url").notNull(),
   description: text("description"),
-  releaseDate: integer("release_date", {
-    mode: "timestamp",
+  releaseDate: timestamp("release_date", {
+    withTimezone: true,
   })
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
-export const musics_albums = sqliteTable("musics_albums", {
+export const musics_albums = pgTable("musics_albums", {
   musicId: text("music_id")
     .references(() => musics.id)
     .notNull(),
@@ -40,4 +41,37 @@ export const musics_albums = sqliteTable("musics_albums", {
     .references(() => albuns.id)
     .notNull(),
   position: integer("position").notNull(),
+});
+
+export const languages = pgTable("languages", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+});
+
+export const lyrics = pgTable("lyrics", {
+  id: text("id").primaryKey(),
+  musicId: text("music_id")
+    .references(() => musics.id)
+    .notNull(),
+});
+
+export const lyrics_lines = pgTable("lyrics_lines", {
+  id: text("id").primaryKey(),
+  lyricsId: text("lyrics_id")
+    .references(() => lyrics.id)
+    .notNull(),
+  position: integer("position").notNull(),
+  start: integer("start").notNull(),
+  end: integer("end").notNull(),
+});
+
+export const lyrics_lines_texts = pgTable("lyrics_lines_texts", {
+  id: text("id").primaryKey(),
+  lyricsLineId: text("lyrics_line_id")
+    .references(() => lyrics_lines.id)
+    .notNull(),
+  languageId: text("language_id")
+    .references(() => languages.id)
+    .notNull(),
+  text: text("text").notNull(),
 });

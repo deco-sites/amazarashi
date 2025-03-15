@@ -10,9 +10,8 @@ interface LoaderProps {
 
 export default async function loader(props: LoaderProps, _req: Request, ctx: AppContext): Promise<MusicData> {
   const { musicId } = props;
-  const drizzle = await ctx.invoke.records.loaders.drizzle();
 
-  const [musicData] = await drizzle
+  const [musicData] = await ctx.drizzle
     .select({
       description: musics.description,
       videoId: musics.youtubeVideo,

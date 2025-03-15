@@ -1,9 +1,0 @@
-{
-  "__resolveType": "site/apps/deco/records.ts",
-  "url": "libsql://amazarashi-decocx.turso.io",
-  "authToken": {
-    "__resolveType": "website/loaders/secret.ts",
-    "name": "DATABASE_AUTH_TOKEN",
-    "encrypted": "c54cc71ccf34bcb876dd6026626e39457a9c5a1770b9cbdecd5b116526d4272091fc07f95ed58ee932cac797bddd1a37e505b5ba40c62a1ea59178f6f7dbcc791ed8b2692bee7dc56838a247efac34d6013ed5b48075de322c46c9edf513532ab0d9256bb0947f8711c82a7f98b72edd1bd9137bf0fa80eaaa29b3b9430fe76d6c559b1f496fb6697dd4fcc46df3693656f15f8adef122228e8f299e201d83fd80101465798917d4cb6c32501dc3fe3785ebf0a611f211a3d4c9943642a6617723dedfc786d2339a017fdcb4575334ec78bf7e8cf304d48de7dae415a17d6401"
-  }
-}

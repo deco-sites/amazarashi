@@ -1,6 +1,6 @@
 import { RequestURLParam } from "apps/website/functions/requestToParam.ts";
 import { eq, sql } from "drizzle-orm";
-import { AppContext } from "site/apps/deco/records.ts";
+import { AppContext } from "site/apps/site.ts";
 import { MusicListItem } from "site/components/MusicList/index.tsx";
 import { musics, musics_albums } from "site/db/schema.ts";
 
@@ -12,10 +12,8 @@ interface LoaderProps {
 /** @title Music List Records Loader */
 export default async function loader(props: LoaderProps, _req: Request, ctx: AppContext): Promise<MusicListItem[]> {
   const { albumId } = props;
-  ctx.invoke;
-  const drizzle = await ctx.invoke.records.loaders.drizzle();
 
-  const musicsResponse = await drizzle
+  const musicsResponse = await ctx.drizzle
     .select({
       id: musics.id,
       name: sql<string>`concat(${musics.nameRomaji}, ' - ', ${musics.nameEnglish})`,

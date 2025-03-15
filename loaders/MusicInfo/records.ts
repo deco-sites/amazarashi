@@ -15,8 +15,7 @@ export default async function loader(props: Props, _req: Request, ctx: AppContex
   const { titleLanguage, id } = props;
   const titleColumn = getAlbumTitleColumn(titleLanguage);
   const altStr = getAlbumCoverAlt(titleLanguage);
-  const drizzle = await ctx.invoke.records.loaders.drizzle();
-  const [music] = await drizzle
+  const [music] = await ctx.drizzle
     .select({
       title: sql<string>`${titleColumn}`,
       romanji: musics.nameRomaji,

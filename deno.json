@@ -38,8 +38,8 @@
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.1",
     "daisyui": "npm:daisyui@4.4.19",
     "@deco/htmx": "https://denopkg.com/deco-cx/apps@0.64.43/htmx/mod.ts",
-    "drizzle-orm": "npm:drizzle-orm@0.30.10",
-    "drizzle-kit": "npm:drizzle-kit@0.28.1",
+    "drizzle-orm": "npm:drizzle-orm@0.40.0",
+    "drizzle-kit": "npm:drizzle-kit@0.30.5",
     "https://esm.sh/*preact-render-to-string@6.3.1": "npm:preact-render-to-string@6.4.2",
     "@deco/deco": "jsr:@deco/deco@1.110.3",
     "@deco/dev": "jsr:@deco/dev@1.110.3"
@@ -59,34 +59,22 @@
     "build": "deno run -A dev.ts build",
     "preview": "deno run -A main.ts",
     "dev": "deno run -A --env --unstable-kv --unstable-hmr dev.ts",
-    "db:setup:deps": "deno cache -r --node-modules-dir npm:drizzle-orm@0.30.10 npm:drizzle-kit@0.21.2 npm:@libsql/client@0.6.0/node",
-    "db:check:credentials": "deno eval --env 'import{getDbCredentials}from\"apps/records/scripts/checkDbCredential.ts\";getDbCredentials();'",
-    "db:pull:prod": "deno eval --env 'import \"apps/records/scripts/pullProd.ts\"'",
-    "db:generate": "deno run -A --node-modules-dir npm:drizzle-kit@0.21.2 generate",
-    "db:migrate": "deno run -A --node-modules-dir --config=deno.json npm:drizzle-kit@0.21.2 migrate",
-    "db:schema:update": "DENO_FUTURE=1 deno task db:check:credentials && deno task db:generate && deno task db:migrate",
+    "db:setup:deps": "deno cache -r --node-modules-dir --allow-scripts=npm:pg@8.14.0 npm:drizzle-orm@0.40.0 npm:drizzle-kit@0.30.5 npm:pg@8.14.0 npm:@types/pg@8.11.11 npm:daisyui@4.4.19",
+    "db:generate": "deno run -A --node-modules-dir npm:drizzle-kit@0.30.5 generate",
+    "db:migrate": "deno run -A --node-modules-dir --config=deno.json npm:drizzle-kit@0.30.5 migrate",
+    "db:studio": "deno run -A --node-modules-dir npm:drizzle-kit@0.30.5 studio",
     "reload": "deno cache -r https://deco.cx/run"
   },
   "githooks": {
     "pre-commit": "check"
   },
-  "exclude": [
-    "node_modules",
-    "static/",
-    "README.md",
-    "_fresh",
-    "**/_fresh/*",
-    ".deco/**"
-  ],
+  "exclude": ["node_modules", "static/", "README.md", "_fresh", "**/_fresh/*", ".deco/**"],
   "lint": {
     "rules": {
-      "tags": [
-        "fresh",
-        "recommended"
-      ]
+      "tags": ["fresh", "recommended"]
     }
   },
-  "nodeModulesDir": false,
+  "nodeModulesDir": "auto",
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact"

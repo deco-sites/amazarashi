@@ -1,5 +1,5 @@
 import { desc, sql } from "drizzle-orm";
-import { FinalAppContext } from "site/apps/site.ts";
+import { AppContext } from "site/apps/site.ts";
 import { CoverItemProps } from "site/components/CoverSlider/CoverItem.tsx";
 import { albuns } from "site/db/schema.ts";
 import { LanguagesTitles, getAlbumCoverAlt, getAlbumTitleColumn } from "site/utils/languagesTitles.ts";
@@ -11,15 +11,13 @@ interface Props {
 }
 
 /** @title Albums Records Loader */
-export default async function loader(props: Props, _req: Request, ctx: FinalAppContext): Promise<CoverItemProps[]> {
+export default async function loader(props: Props, _req: Request, ctx: AppContext): Promise<CoverItemProps[]> {
   const { language, maxItems, albumPath } = props;
 
   const titleColumn = getAlbumTitleColumn(language);
   const alt = getAlbumCoverAlt(language);
 
-  const drizzle = await ctx.invoke.records.loaders.drizzle();
-
-  const albums = await drizzle
+  const albums = await ctx.drizzle
     .select({
       title: sql<string>`${titleColumn}`,
       url: sql<string>`concat('${sql.raw(albumPath)}', ${albuns.id})`,
