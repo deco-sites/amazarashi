@@ -45,5 +45,7 @@
   "flavor": {
     "framework": "fresh"
   },
-  "gcpServiceAccountKey": {}
+  "gcpServiceAccountKey": {
+    "get": {}
+  }
 }

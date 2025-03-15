@@ -1,20 +1,15 @@
-import { type AppContext as AC, type App } from "@deco/deco";
+import { type App as A, type AppContext as AC } from "@deco/deco";
 import { Secret } from "apps/website/loaders/secret.ts";
 import website, { Props as WebsiteProps } from "apps/website/mod.ts";
 import { drizzle } from "drizzle-orm/node-postgres";
 import pg from "pg";
-import manifest, { Manifest } from "../manifest.gen.ts";
+import manifest, { Manifest } from "site/manifest.gen.ts";
 
-type WebsiteApp = ReturnType<typeof website>;
-
-export interface Props extends WebsiteProps {
-  /**
-   * @title GCP Service Account Key
-   * @description The GCP service account key for the site.
-   */
+export type Props = {
   gcpServiceAccountKey: Secret;
-}
-
+} & WebsiteProps;
+export type App = ReturnType<typeof Site>;
+export type AppContext = AC<App>;
 interface State extends WebsiteProps {
   drizzle: ReturnType<typeof drizzle>;
   gcpServiceAccountKey: unknown;
@@ -26,7 +21,7 @@ interface State extends WebsiteProps {
  * @category Tool
  * @logo https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/1/0ac02239-61e6-4289-8a36-e78c0975bcc8
  */
-export default function Site(state: Props): App<Manifest, State, [WebsiteApp]> {
+export default function Site(state: Props): A<Manifest, Props, [ReturnType<typeof website>]> {
   const user = Deno.env.get("DATABASE_USER") ?? "amazarashi";
   const password = Deno.env.get("DATABASE_PASSWORD") ?? "amazarashi";
   const host = "selfhost.gui.dev.br";
@@ -51,6 +46,4 @@ export default function Site(state: Props): App<Manifest, State, [WebsiteApp]> {
   };
 }
 
-export type SiteApp = ReturnType<typeof Site>;
-export type AppContext = AC<App<Manifest, State, [WebsiteApp]>>;
 export { onBeforeResolveProps, Preview } from "apps/website/mod.ts";
