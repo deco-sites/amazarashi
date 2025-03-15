@@ -18,8 +18,14 @@ interface State extends Props {
  * @logo https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/1/0ac02239-61e6-4289-8a36-e78c0975bcc8
  */
 export default function Site(state: Props): App<Manifest, State, [WebsiteApp]> {
+  const user = Deno.env.get("DATABASE_USER") ?? "amazarashi";
+  const password = Deno.env.get("DATABASE_PASSWORD") ?? "amazarashi";
+  const host = "selfhost.gui.dev.br";
+  const port = 5432;
+  const database = "amazarashi";
+
   const pool = new pg.Pool({
-    connectionString: "postgresql://amazarashi:amazarashi@selfhost.gui.dev.br:5432/amazarashi",
+    connectionString: `postgresql://${user}:${password}@${host}:${port}/${database}`,
   });
 
   const db = drizzle({ client: pool });
