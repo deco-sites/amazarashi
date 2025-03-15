@@ -8,9 +8,8 @@ export interface MusicLyric {
 }
 
 export interface MusicData {
-  description: string;
-  videoId: string;
-  lyrics: MusicLyric[];
+  description: string | null;
+  videoId: string | null;
 }
 
 export interface MusicDataProps {
