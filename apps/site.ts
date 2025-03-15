@@ -1,14 +1,23 @@
 import { type AppContext as AC, type App } from "@deco/deco";
-import type { Manifest as ManifestRecords } from "apps/records/manifest.gen.ts";
-import website, { Props } from "apps/website/mod.ts";
+import { Secret } from "apps/website/loaders/secret.ts";
+import website, { Props as WebsiteProps } from "apps/website/mod.ts";
 import { drizzle } from "drizzle-orm/node-postgres";
 import pg from "pg";
 import manifest, { Manifest } from "../manifest.gen.ts";
 
 type WebsiteApp = ReturnType<typeof website>;
 
-interface State extends Props {
+export interface Props extends WebsiteProps {
+  /**
+   * @title GCP Service Account Key
+   * @description The GCP service account key for the site.
+   */
+  gcpServiceAccountKey: Secret;
+}
+
+interface State extends WebsiteProps {
   drizzle: ReturnType<typeof drizzle>;
+  gcpServiceAccountKey: unknown;
 }
 
 /**
@@ -23,16 +32,19 @@ export default function Site(state: Props): App<Manifest, State, [WebsiteApp]> {
   const host = "selfhost.gui.dev.br";
   const port = 5432;
   const database = "amazarashi";
-
+  const connectionString = `postgresql://${user}:${password}@${host}:${port}/${database}`;
   const pool = new pg.Pool({
-    connectionString: `postgres://${user}:${password}@${host}:${port}/${database}`,
+    connectionString: connectionString,
   });
+  const gcpServiceAccountKey = JSON.parse(state.gcpServiceAccountKey.get() ?? "{}");
+  console.log(gcpServiceAccountKey);
 
   const db = drizzle({ client: pool });
   return {
     state: {
       ...state,
       drizzle: db,
+      gcpServiceAccountKey,
     },
     manifest,
     dependencies: [website(state)],
@@ -40,6 +52,5 @@ export default function Site(state: Props): App<Manifest, State, [WebsiteApp]> {
 }
 
 export type SiteApp = ReturnType<typeof Site>;
-export type UniqueManifest = Manifest & ManifestRecords;
-export type AppContext = AC<App<UniqueManifest, State, [WebsiteApp]>>;
+export type AppContext = AC<App<Manifest, State, [WebsiteApp]>>;
 export { onBeforeResolveProps, Preview } from "apps/website/mod.ts";
