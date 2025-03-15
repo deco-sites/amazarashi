@@ -32,8 +32,8 @@
     "simple-git": "npm:simple-git@^3.25.0",
     "std/": "https://deno.land/std@0.190.0/",
     "site/": "./",
-    "deco/": "https://cdn.jsdelivr.net/gh/deco-cx/deco@1.109.0/",
-    "apps/": "https://cdn.jsdelivr.net/gh/deco-cx/apps@0.64.26/",
+    "deco/": "https://cdn.jsdelivr.net/gh/deco-cx/deco@1.110.5/",
+    "apps/": "https://cdn.jsdelivr.net/gh/deco-cx/apps@0.64.50/",
     "@preact/signals": "https://esm.sh/*@preact/signals@1.2.2",
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.1",
     "daisyui": "npm:daisyui@4.4.19",
@@ -41,8 +41,8 @@
     "drizzle-orm": "npm:drizzle-orm@0.40.0",
     "drizzle-kit": "npm:drizzle-kit@0.30.5",
     "https://esm.sh/*preact-render-to-string@6.3.1": "npm:preact-render-to-string@6.4.2",
-    "@deco/deco": "jsr:@deco/deco@1.109.0",
-    "@deco/dev": "jsr:@deco/dev@1.109.0",
+    "@deco/deco": "jsr:@deco/deco@1.110.5",
+    "@deco/dev": "jsr:@deco/dev@1.110.5",
     "pg": "npm:pg@8.14.0"
   },
   "tasks": {
@@ -69,10 +69,20 @@
   "githooks": {
     "pre-commit": "check"
   },
-  "exclude": ["node_modules", "static/", "README.md", "_fresh", "**/_fresh/*", ".deco/**"],
+  "exclude": [
+    "node_modules",
+    "static/",
+    "README.md",
+    "_fresh",
+    "**/_fresh/*",
+    ".deco/**"
+  ],
   "lint": {
     "rules": {
-      "tags": ["fresh", "recommended"]
+      "tags": [
+        "fresh",
+        "recommended"
+      ]
     }
   },
   "nodeModulesDir": false,
@@ -83,7 +93,9 @@
   "lock": false,
   "deploy": {
     "project": "cec63fec-08f4-46ea-b88c-c855ce0c2e8b",
-    "exclude": ["**/node_modules"],
+    "exclude": [
+      "**/node_modules"
+    ],
     "include": [],
     "entrypoint": "main.ts"
   }

@@ -21,7 +21,7 @@ interface State extends WebsiteProps {
  * @category Tool
  * @logo https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/1/0ac02239-61e6-4289-8a36-e78c0975bcc8
  */
-export default function Site(state: Props): A<Manifest, Props, [ReturnType<typeof website>]> {
+export default function Site(state: Props): A<Manifest, State, [ReturnType<typeof website>]> {
   const user = Deno.env.get("DATABASE_USER") ?? "amazarashi";
   const password = Deno.env.get("DATABASE_PASSWORD") ?? "amazarashi";
   const host = "selfhost.gui.dev.br";
