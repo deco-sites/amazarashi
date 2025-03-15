@@ -42,7 +42,8 @@
     "drizzle-kit": "npm:drizzle-kit@0.30.5",
     "https://esm.sh/*preact-render-to-string@6.3.1": "npm:preact-render-to-string@6.4.2",
     "@deco/deco": "jsr:@deco/deco@1.110.3",
-    "@deco/dev": "jsr:@deco/dev@1.110.3"
+    "@deco/dev": "jsr:@deco/dev@1.110.3",
+    "pg": "npm:pg@8.14.0"
   },
   "tasks": {
     "start": "deno run -A --unstable-http --env https://deco.cx/run -- deno task dev",
