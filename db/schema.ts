@@ -1,4 +1,4 @@
-import { integer, pgTable, text, timestamp } from "drizzle-orm/pg-core";
+import { integer, pgTable, text, time, timestamp } from "drizzle-orm/pg-core";
 
 export const albuns = pgTable("albuns", {
   id: text("id").primaryKey(),
@@ -61,8 +61,8 @@ export const lyrics_lines = pgTable("lyrics_lines", {
     .references(() => lyrics.id)
     .notNull(),
   position: integer("position").notNull(),
-  start: integer("start").notNull(),
-  end: integer("end").notNull(),
+  start: time("start", { withTimezone: false, precision: 3 }).notNull().defaultNow(),
+  end: time("end", { withTimezone: false, precision: 3 }).notNull().defaultNow(),
 });
 
 export const lyrics_lines_texts = pgTable("lyrics_lines_texts", {
