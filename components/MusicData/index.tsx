@@ -58,11 +58,12 @@ function MusicData(props: MusicDataProps) {
   const lyricsTabId = useId();
   const moreInfoTabId = useId();
 
+  const lyricsLines = props.lyrics[0].lines ?? [];
   return (
     <>
-      <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-10 py-6 lg:py-6 xl:py-12 px-6 lg:px-20 xl:px-36 h-dvh">
+      <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-10 py-6 lg:py-6 xl:py-12 px-6 lg:px-20 xl:px-36">
         <div className="lg:w-1/2 text-center lg:text-left h-full">
-          <ul className="flex justify-around mb-3" id={tabsIds}>
+          <ul className="flex justify-around mb-6" id={tabsIds}>
             <li>
               <a className="animated cursor-pointer before:!w-full">
                 Descrição
@@ -81,10 +82,44 @@ function MusicData(props: MusicDataProps) {
             <p class="text-justify">{description}</p>
           </div>
           <div id={lyricsTabId} className="hidden">
-            <p>Letras</p>
+            <div class="flex justify-end mb-4">
+              <a
+                href={`/lyrics-sync/${props.data.id}`}
+                class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-md flex items-center gap-2 transition-colors"
+              >
+                <Icon id="view" size={20} strokeWidth={2} />
+                Ver sincronizado
+              </a>
+            </div>
+            <p class="">
+              {lyricsLines.map((line) => {
+                const hiragana = line.texts.find((text) =>
+                  text.languageId === "hiragana"
+                );
+                const romanji = line.texts.find((text) =>
+                  text.languageId === "romanji"
+                );
+                const portuguese = line.texts.find((text) =>
+                  text.languageId === "portuguese"
+                );
+                return (
+                  <p className="mb-6">
+                    <span className="block text-lg font-medium text-gray-200">
+                      {hiragana?.text}
+                    </span>
+                    <span className="block text-sm text-gray-400 italic">
+                      {romanji?.text}
+                    </span>
+                    <span className="block text-base text-gray-300">
+                      {portuguese?.text}
+                    </span>
+                  </p>
+                );
+              })}
+            </p>
           </div>
           <div id={moreInfoTabId} className="hidden">
-            <h5 class="mb-2">Veja também no:</h5>
+            <h5 class="mb-5">Veja também no:</h5>
             <div class="flex flex-col gap-2">
               {spotifyId
                 ? (
@@ -113,17 +148,19 @@ function MusicData(props: MusicDataProps) {
             </div>
           </div>
         </div>
-        <iframe
-          className="lg:w-1/2 aspect-video"
-          width="100%"
-          height="315"
-          src={`https://www.youtube.com/embed/${youtubeVideoClipId}`}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        >
-        </iframe>
+        <div className="lg:w-1/2 lg:sticky lg:top-16 min-h-[500px] h-full max-h-[500px]">
+          <iframe
+            className="aspect-video"
+            width="100%"
+            height="100%"
+            src={`https://www.youtube.com/embed/${youtubeVideoClipId}`}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          >
+          </iframe>
+        </div>
       </div>
       <script
         src={useScriptAsDataURI(

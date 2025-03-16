@@ -13,6 +13,7 @@ export default async function loader(props: LoaderProps, _req: Request, ctx: App
 
   const [musicData] = await ctx.drizzle
     .select({
+      id: musics.id,
       description: musics.description,
       youtubeVideoClipId: musics.youtubeVideoClipId,
       spotifyId: musics.spotifyId,

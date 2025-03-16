@@ -1,3 +1,5 @@
+import { Lyrics } from "site/loaders/Lyrics/GetLyrics.ts";
+
 export interface MusicLyric {
   position: number;
   romanji: string;
@@ -8,6 +10,7 @@ export interface MusicLyric {
 }
 
 export interface MusicData {
+  id: string;
   description: string | null;
   youtubeVideoClipId: string | null;
   spotifyId: string | null;
@@ -16,4 +19,5 @@ export interface MusicData {
 
 export interface MusicDataProps {
   data: MusicData;
+  lyrics: Lyrics[];
 }

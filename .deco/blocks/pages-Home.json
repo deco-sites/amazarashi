@@ -30,18 +30,11 @@
     {
       "__resolveType": "site/sections/CoverSlider.tsx",
       "title": "Ultimos Albums",
-      "albums": {
-        "__resolveType": "site/loaders/CoverSlider/records.ts",
-        "titleGetter": "nameRomaji",
-        "language": "romanji",
-        "maxItems": 10,
-        "albumPath": "/album/"
-      },
       "covers": {
-        "__resolveType": "site/loaders/CoverSlider/records.ts",
+        "__resolveType": "site/loaders/CoverSlider/recordsAlbuns.ts",
         "language": "romanji",
         "albumPath": "/album/",
-        "maxItems": 20
+        "titleGetter": "nameRomaji"
       }
     }
   ]

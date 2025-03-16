@@ -4,6 +4,7 @@
 
 import * as $_app from "./routes/_app.tsx";
 import * as $LyricsEditor from "./islands/LyricsEditor.tsx";
+import * as $LyricsSync from "./islands/LyricsSync.tsx";
 import * as $LyricsSynchronization from "./islands/LyricsSynchronization.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
@@ -13,6 +14,7 @@ const manifest = {
   },
   islands: {
     "./islands/LyricsEditor.tsx": $LyricsEditor,
+    "./islands/LyricsSync.tsx": $LyricsSync,
     "./islands/LyricsSynchronization.tsx": $LyricsSynchronization,
   },
   baseUrl: import.meta.url,

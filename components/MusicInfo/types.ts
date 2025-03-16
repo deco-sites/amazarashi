@@ -18,3 +18,12 @@ export interface AlbumInfoData {
 export interface AlbumInfoProps {
   data: AlbumInfoData;
 }
+
+export interface MusicInfoData {
+  id: string;
+  title: string;
+  description: string;
+  youtubeVideoClipId: string;
+  youtubeMusicId?: string;
+  spotifyId?: string;
+}
