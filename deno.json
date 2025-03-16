@@ -43,7 +43,9 @@
     "https://esm.sh/*preact-render-to-string@6.3.1": "npm:preact-render-to-string@6.4.2",
     "@deco/deco": "jsr:@deco/deco@1.110.5",
     "@deco/dev": "jsr:@deco/dev@1.110.5",
-    "pg": "npm:pg@8.14.0"
+    "pg": "npm:pg@8.14.0",
+    "@google-cloud/translate": "npm:@google-cloud/translate@8.5.1",
+    "google-auth-library": "npm:google-auth-library@9.15.1"
   },
   "tasks": {
     "start": "deno run -A --unstable-http --env https://deco.cx/run -- deno task dev",
@@ -69,20 +71,10 @@
   "githooks": {
     "pre-commit": "check"
   },
-  "exclude": [
-    "node_modules",
-    "static/",
-    "README.md",
-    "_fresh",
-    "**/_fresh/*",
-    ".deco/**"
-  ],
+  "exclude": ["node_modules", "static/", "README.md", "_fresh", "**/_fresh/*", ".deco/**"],
   "lint": {
     "rules": {
-      "tags": [
-        "fresh",
-        "recommended"
-      ]
+      "tags": ["fresh", "recommended"]
     }
   },
   "nodeModulesDir": false,
@@ -93,9 +85,7 @@
   "lock": false,
   "deploy": {
     "project": "cec63fec-08f4-46ea-b88c-c855ce0c2e8b",
-    "exclude": [
-      "**/node_modules"
-    ],
+    "exclude": ["**/node_modules"],
     "include": [],
     "entrypoint": "main.ts"
   }

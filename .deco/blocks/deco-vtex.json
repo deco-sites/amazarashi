@@ -1,8 +1,0 @@
-{
-  "__resolveType": "site/apps/deco/vtex.ts",
-  "salesChannel": 1,
-  "defaultSegment": {
-    "channelPrivacy": "public"
-  },
-  "platform": "vtex"
-}

@@ -14,6 +14,7 @@ import * as $$$5 from "./loaders/MusicHero/records.ts";
 import * as $$$6 from "./loaders/MusicInfo/records.ts";
 import * as $$$7 from "./loaders/MusicList/recordsAlbuns.ts";
 import * as $$$8 from "./loaders/SeoLoader/records/album.ts";
+import * as $$$9 from "./loaders/Translation/Translator.ts";
 import * as $$$$$$0 from "./sections/AlbumInfo.tsx";
 import * as $$$$$$1 from "./sections/Component.tsx";
 import * as $$$$$$2 from "./sections/CoverSlider.tsx";
@@ -40,6 +41,7 @@ const manifest = {
     "site/loaders/MusicInfo/records.ts": $$$6,
     "site/loaders/MusicList/recordsAlbuns.ts": $$$7,
     "site/loaders/SeoLoader/records/album.ts": $$$8,
+    "site/loaders/Translation/Translator.ts": $$$9,
   },
   "sections": {
     "site/sections/AlbumInfo.tsx": $$$$$$0,

@@ -1,15 +1,20 @@
 import { sql } from "drizzle-orm";
 import { AppContext } from "site/apps/site.ts";
 import { lyrics, lyrics_lines, lyrics_lines_texts } from "site/db/schema.ts";
-import { Lyrics } from "site/loaders/Lyrics/GetLyrics.ts";
+import { Lyrics } from "../../loaders/Lyrics/GetLyrics.ts";
 
-export default async function action(props: Lyrics[], _req: Request, ctx: AppContext) {
-  const lyricsToInsert = props.map((lyrics) => ({
+interface Props {
+  lyrics: Lyrics[];
+}
+
+export default async function action(props: Props, _req: Request, ctx: AppContext) {
+  const lyricsProps = props.lyrics;
+  const lyricsToInsert = lyricsProps.map((lyrics) => ({
     id: lyrics.id,
     musicId: lyrics.musicId,
   }));
 
-  const linesToInsert = props.flatMap((lyrics) =>
+  const linesToInsert = lyricsProps.flatMap((lyrics) =>
     lyrics.lines.map((line) => ({
       id: line.id,
       lyricsId: lyrics.id,
@@ -18,7 +23,7 @@ export default async function action(props: Lyrics[], _req: Request, ctx: AppCon
       end: line.end,
     }))
   );
-  const textsToInsert = props.flatMap((lyrics) =>
+  const textsToInsert = lyricsProps.flatMap((lyrics) =>
     lyrics.lines.flatMap((line) =>
       line.texts.map((text) => ({
         id: text.id,

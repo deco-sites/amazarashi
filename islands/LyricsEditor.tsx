@@ -1,8 +1,8 @@
 import { useState } from "preact/hooks";
-import { LyricsLanguage } from "site/loaders/Lyrics/GetLanguages.ts";
-import { Line, Lyrics } from "site/loaders/Lyrics/GetLyrics.ts";
+import { invoke } from "site/runtime.ts";
 import { clx } from "site/sdk/clx.ts";
-
+import { LyricsLanguage } from "../loaders/Lyrics/GetLanguages.ts";
+import { Line, Lyrics } from "../loaders/Lyrics/GetLyrics.ts";
 interface LyricsEditorProps {
   lyrics: Lyrics[];
   languages: LyricsLanguage[];
@@ -11,13 +11,15 @@ interface LyricsEditorProps {
 export default function LyricsEditor(props: LyricsEditorProps) {
   const [lyricsArray, setLyricsArray] = useState<Lyrics[]>(props.lyrics);
   const [selectedLyricsIndex, setSelectedLyricsIndex] = useState<number>(0);
+  const [loadingTranslateAndRomanize, setLoadingTranslateAndRomanize] =
+    useState<boolean>(false);
   const [selectedLanguage, setSelectedLanguage] = useState<string>(
     props.languages[0]?.id || "",
   );
   const [selectedLineIndex, setSelectedLineIndex] = useState<number | null>(
     null,
   );
-
+  const [loadingSave, setLoadingSave] = useState<boolean>(false);
   const currentLyrics = lyricsArray[selectedLyricsIndex];
 
   const handleLineChange = (field: keyof Line, value: string | number) => {
@@ -83,6 +85,108 @@ export default function LyricsEditor(props: LyricsEditorProps) {
     newLyricsArray[selectedLyricsIndex].lines.splice(selectedLineIndex, 1);
     setLyricsArray(newLyricsArray);
     setSelectedLineIndex(null);
+  };
+
+  const autoRomanizeAndTranslate = async () => {
+    if (loadingTranslateAndRomanize) return;
+    setLoadingTranslateAndRomanize(true);
+    try {
+      const hiraganaLyrics = lyricsArray[selectedLyricsIndex].lines.flatMap(
+        (line) => {
+          return line.texts.filter((text) => text.languageId === "hiragana")
+            .map((
+              text,
+            ) => text.text);
+        },
+      ).filter((lyric) => lyric.length > 0);
+      const tranlatedAndRomanized = await invoke.site.loaders.Translation
+        .Translator({
+          lyrics: hiraganaLyrics,
+        });
+      if ("error" in tranlatedAndRomanized) {
+        console.error(tranlatedAndRomanized.error);
+        setLoadingTranslateAndRomanize(false);
+        return;
+      }
+      const newLyricsArray = [...lyricsArray];
+      newLyricsArray[selectedLyricsIndex].lines =
+        newLyricsArray[selectedLyricsIndex].lines.map((line) => {
+          const hiraganaLyric = line.texts.filter((text) =>
+            text.languageId === "hiragana"
+          )[0].text;
+          const tranlationAndRomanization = hiraganaLyric === ""
+            ? {
+              translated: "",
+              romanized: "",
+              original: "",
+            }
+            : tranlatedAndRomanized.lyrics.find(
+              (translatedAndRomanizedLyric) => {
+                return translatedAndRomanizedLyric.original === hiraganaLyric;
+              },
+            );
+
+          if (!tranlationAndRomanization) {
+            console.error(
+              "No tranlation and romanization found for hiragana lyric",
+              hiraganaLyric,
+            );
+            return line;
+          }
+
+          const hasRomanji = line.texts.findIndex((text) =>
+            text.languageId === "romanji"
+          );
+          if (hasRomanji === -1) {
+            line.texts.push({
+              id: crypto.randomUUID(),
+              languageId: "romanji",
+              text: tranlationAndRomanization.romanized,
+            });
+          } else {
+            line.texts[hasRomanji] = {
+              ...line.texts[hasRomanji],
+              text: tranlationAndRomanization.romanized,
+            };
+          }
+
+          const hasPortuguese = line.texts.findIndex((text) =>
+            text.languageId === "portuguese"
+          );
+          if (hasPortuguese === -1) {
+            line.texts.push({
+              id: crypto.randomUUID(),
+              languageId: "portuguese",
+              text: tranlationAndRomanization.translated,
+            });
+          } else {
+            line.texts[hasPortuguese] = {
+              ...line.texts[hasPortuguese],
+              text: tranlationAndRomanization.translated,
+            };
+          }
+          return line;
+        });
+      setLyricsArray(newLyricsArray);
+      setLoadingTranslateAndRomanize(false);
+    } catch (error) {
+      console.error(error);
+      setLoadingTranslateAndRomanize(false);
+    }
+  };
+
+  const saveLyrics = async () => {
+    if (loadingSave) return;
+    setLoadingSave(true);
+    try {
+      await invoke.site.actions.Lyrics.save({
+        lyrics: lyricsArray,
+      });
+      setLoadingSave(false);
+    } catch (error) {
+      console.error(error);
+      setLoadingSave(false);
+    }
   };
 
   if (lyricsArray.length === 0) {
@@ -163,6 +267,19 @@ export default function LyricsEditor(props: LyricsEditorProps) {
               ))}
             </div>
           </div>
+        </div>
+
+        <div class="mb-4">
+          <button
+            onClick={autoRomanizeAndTranslate}
+            class="btn btn-outline text-gray-800 mr-auto block w-full"
+          >
+            {loadingTranslateAndRomanize
+              ? <span class="loading loading-spinner loading-sm"></span>
+              : (
+                "Auto Romanize and Translate"
+              )}
+          </button>
         </div>
 
         <div class="mb-4">
@@ -276,6 +393,18 @@ export default function LyricsEditor(props: LyricsEditorProps) {
             Add Text
           </button>
         </div>
+
+        <button
+          onClick={saveLyrics}
+          type="button"
+          class="btn  text-white hover:text-black hover:bg-white hover:border-black block ml-auto w-full mt-4"
+        >
+          {loadingSave
+            ? <span class="loading loading-spinner loading-sm"></span>
+            : (
+              "Save"
+            )}
+        </button>
       </div>
     </div>
   );

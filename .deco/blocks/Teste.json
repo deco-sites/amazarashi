@@ -1,4 +1,7 @@
 {
-  "__resolveType": "site/loaders/Lyrics/GetLyrics.ts",
-  "musicId": "kisetsu-wa-tsugitsugi-shindeiku"
+  "__resolveType": "site/loaders/Translation/Translator.ts",
+  "lyrics": [
+    "季節は次々死んでいく",
+    "絶命の声が風になる"
+  ]
 }

@@ -5,14 +5,14 @@ import { drizzle } from "drizzle-orm/node-postgres";
 import pg from "pg";
 import manifest, { Manifest } from "site/manifest.gen.ts";
 
-export type Props = {
-  gcpServiceAccountKey: Secret;
-} & WebsiteProps;
+export interface Props extends WebsiteProps {
+  gcpServiceAccountKey?: Secret;
+}
 export type App = ReturnType<typeof Site>;
 export type AppContext = AC<App>;
 interface State extends WebsiteProps {
+  gcpServiceAccountKey: string;
   drizzle: ReturnType<typeof drizzle>;
-  gcpServiceAccountKey: unknown;
 }
 
 /**
@@ -31,15 +31,18 @@ export default function Site(state: Props): A<Manifest, State, [ReturnType<typeo
   const pool = new pg.Pool({
     connectionString: connectionString,
   });
-  const gcpServiceAccountKey = JSON.parse(state.gcpServiceAccountKey.get() ?? "{}");
-  console.log(gcpServiceAccountKey);
+  let gcpServiceAccountKey = "";
+  if (state.gcpServiceAccountKey) {
+    gcpServiceAccountKey = state.gcpServiceAccountKey.get() ?? "";
+  }
 
   const db = drizzle({ client: pool });
   return {
     state: {
       ...state,
+
       drizzle: db,
-      gcpServiceAccountKey,
+      gcpServiceAccountKey: gcpServiceAccountKey,
     },
     manifest,
     dependencies: [website(state)],
