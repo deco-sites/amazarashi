@@ -35,8 +35,6 @@ export default function MusicInfo(props: MusicInfoProps) {
       portuguese,
       releaseDate,
       cover,
-      spotifyId,
-      youtubeMusicId,
     },
   } = props;
 
@@ -72,32 +70,6 @@ export default function MusicInfo(props: MusicInfoProps) {
             <br />
             <strong>Data de Lançamento:</strong> {formattedReleaseDate}
           </p>
-          <div class="flex flex-col gap-2">
-            {spotifyId
-              ? (
-                <a
-                  target="_blank"
-                  href={`https://open.spotify.com/tracklea/${spotifyId}`}
-                  class="flex gap-2 items-center justify-center w-fit hover:font-semibold hover:text-white cursor-pointer"
-                >
-                  <Icon id="Spotify" size={24} strokeWidth={2} />
-                  <span>Ouvir no Spotify</span>
-                </a>
-              )
-              : null}
-            {youtubeMusicId
-              ? (
-                <a
-                  target="_blank"
-                  href={`https://music.youtube.com/watch?v=${youtubeMusicId}`}
-                  class="flex gap-2 items-center justify-center w-fit hover:font-semibold hover:text-white cursor-pointer"
-                >
-                  <Icon id="YoutubeMusic" size={24} strokeWidth={2} />
-                  <span>Ouvir no Youtube Music</span>
-                </a>
-              )
-              : null}
-          </div>
         </div>
       </div>
     </div>

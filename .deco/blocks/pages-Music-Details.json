@@ -16,6 +16,20 @@
           "param": "id"
         }
       }
+    },
+    {
+      "__resolveType": "site/sections/ShowBeforeAnimation.tsx",
+      "animation": "awaitBottomAnimationFadInEnd",
+      "children": {
+        "__resolveType": "site/sections/MusicData.tsx",
+        "data": {
+          "__resolveType": "site/loaders/MusicData/records.ts",
+          "musicId": {
+            "__resolveType": "website/functions/requestToParam.ts",
+            "param": "id"
+          }
+        }
+      }
     }
   ]
 }

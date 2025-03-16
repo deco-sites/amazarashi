@@ -14,7 +14,9 @@ export default async function loader(props: LoaderProps, _req: Request, ctx: App
   const [musicData] = await ctx.drizzle
     .select({
       description: musics.description,
-      videoId: musics.youtubeVideo,
+      youtubeVideoClipId: musics.youtubeVideoClipId,
+      spotifyId: musics.spotifyId,
+      youtubeMusicId: musics.youtubeMusicId,
     })
     .from(musics)
     .where(eq(musics.id, musicId));

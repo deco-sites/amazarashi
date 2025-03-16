@@ -1,0 +1,406 @@
+{
+  "id": "d733e294-5a27-4528-b4fb-600015fbd839",
+  "prevId": "5b45f965-e0fd-4886-9e7b-81203c3210c9",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.albuns": {
+      "name": "albuns",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name_romanji": {
+          "name": "name_romanji",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name_hiragana": {
+          "name": "name_hiragana",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name_english": {
+          "name": "name_english",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name_portuguese": {
+          "name": "name_portuguese",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "image": {
+          "name": "image",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "release_date": {
+          "name": "release_date",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.languages": {
+      "name": "languages",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.lyrics": {
+      "name": "lyrics",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "music_id": {
+          "name": "music_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "lyrics_music_id_musics_id_fk": {
+          "name": "lyrics_music_id_musics_id_fk",
+          "tableFrom": "lyrics",
+          "tableTo": "musics",
+          "columnsFrom": [
+            "music_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.lyrics_lines": {
+      "name": "lyrics_lines",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "lyrics_id": {
+          "name": "lyrics_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "position": {
+          "name": "position",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "start": {
+          "name": "start",
+          "type": "time(3)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "end": {
+          "name": "end",
+          "type": "time(3)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "lyrics_lines_lyrics_id_lyrics_id_fk": {
+          "name": "lyrics_lines_lyrics_id_lyrics_id_fk",
+          "tableFrom": "lyrics_lines",
+          "tableTo": "lyrics",
+          "columnsFrom": [
+            "lyrics_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.lyrics_lines_texts": {
+      "name": "lyrics_lines_texts",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "lyrics_line_id": {
+          "name": "lyrics_line_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "language_id": {
+          "name": "language_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "text": {
+          "name": "text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "lyrics_lines_texts_lyrics_line_id_lyrics_lines_id_fk": {
+          "name": "lyrics_lines_texts_lyrics_line_id_lyrics_lines_id_fk",
+          "tableFrom": "lyrics_lines_texts",
+          "tableTo": "lyrics_lines",
+          "columnsFrom": [
+            "lyrics_line_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "lyrics_lines_texts_language_id_languages_id_fk": {
+          "name": "lyrics_lines_texts_language_id_languages_id_fk",
+          "tableFrom": "lyrics_lines_texts",
+          "tableTo": "languages",
+          "columnsFrom": [
+            "language_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.musics": {
+      "name": "musics",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name_romanji": {
+          "name": "name_romanji",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name_hiragana": {
+          "name": "name_hiragana",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name_english": {
+          "name": "name_english",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name_portuguese": {
+          "name": "name_portuguese",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "duration": {
+          "name": "duration",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "youtube_video_clip_id": {
+          "name": "youtube_video_clip_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "youtube_music_id": {
+          "name": "youtube_music_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "spotify_id": {
+          "name": "spotify_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "video_clip_cover_url": {
+          "name": "video_clip_cover_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "release_date": {
+          "name": "release_date",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.musics_albums": {
+      "name": "musics_albums",
+      "schema": "",
+      "columns": {
+        "music_id": {
+          "name": "music_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "album_id": {
+          "name": "album_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "position": {
+          "name": "position",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "musics_albums_music_id_musics_id_fk": {
+          "name": "musics_albums_music_id_musics_id_fk",
+          "tableFrom": "musics_albums",
+          "tableTo": "musics",
+          "columnsFrom": [
+            "music_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "musics_albums_album_id_albuns_id_fk": {
+          "name": "musics_albums_album_id_albuns_id_fk",
+          "tableFrom": "musics_albums",
+          "tableTo": "albuns",
+          "columnsFrom": [
+            "album_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

@@ -15,6 +15,13 @@
       "when": 1742044022870,
       "tag": "0001_clumsy_the_liberteens",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1742138673980,
+      "tag": "0002_tense_devos",
+      "breakpoints": true
     }
   ]
 }

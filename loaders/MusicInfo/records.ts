@@ -24,7 +24,7 @@ export default async function loader(props: Props, _req: Request, ctx: AppContex
       portuguese: musics.namePortuguese,
       releaseDate: musics.releaseDate,
       cover: {
-        url: musics.coverUrl,
+        url: musics.videoClipCoverUrl,
         alt: sql<string>`concat('${sql.raw(altStr)}', ${titleColumn})`,
         isSquare: sql<boolean>`1`,
       },

@@ -9,7 +9,9 @@ export interface MusicLyric {
 
 export interface MusicData {
   description: string | null;
-  videoId: string | null;
+  youtubeVideoClipId: string | null;
+  spotifyId: string | null;
+  youtubeMusicId: string | null;
 }
 
 export interface MusicDataProps {

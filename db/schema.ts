@@ -21,10 +21,10 @@ export const musics = pgTable("musics", {
   nameEnglish: text("name_english").notNull(),
   namePortuguese: text("name_portuguese").notNull(),
   duration: integer("duration").notNull(),
-  youtubeVideo: text("youtube_video"),
+  youtubeVideoClipId: text("youtube_video_clip_id"),
   youtubeMusicId: text("youtube_music_id"),
   spotifyId: text("spotify_id"),
-  coverUrl: text("cover_url").notNull(),
+  videoClipCoverUrl: text("video_clip_cover_url").notNull(),
   description: text("description"),
   releaseDate: timestamp("release_date", {
     withTimezone: true,
