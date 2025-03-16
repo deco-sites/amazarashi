@@ -271,6 +271,7 @@ export default function LyricsEditor(props: LyricsEditorProps) {
 
         <div class="mb-4">
           <button
+            type="button"
             onClick={autoRomanizeAndTranslate}
             class="btn btn-outline text-gray-800 mr-auto block w-full"
           >

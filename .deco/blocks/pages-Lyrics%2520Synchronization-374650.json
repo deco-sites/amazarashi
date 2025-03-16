@@ -1,0 +1,32 @@
+{
+  "name": "Lyrics Synchronization",
+  "sections": [
+    {
+      "__resolveType": "site/sections/LyricsSynchronization.tsx",
+      "musicInfo": {
+        "__resolveType": "site/loaders/MusicInfo/records.ts",
+        "titleLanguage": "hiragana",
+        "id": {
+          "__resolveType": "website/functions/requestToParam.ts",
+          "param": "musicId"
+        }
+      },
+      "lyrics": {
+        "__resolveType": "site/loaders/Lyrics/GetLyrics.ts",
+        "musicId": {
+          "__resolveType": "website/functions/requestToParam.ts",
+          "param": "musicId"
+        }
+      },
+      "languages": {
+        "__resolveType": "site/loaders/Lyrics/GetLanguages.ts"
+      },
+      "selectedLanguage": "romanji"
+    }
+  ],
+  "seo": {
+    "__resolveType": "website/sections/Seo/SeoV2.tsx"
+  },
+  "__resolveType": "website/pages/Page.tsx",
+  "path": "/lyricsSynchronization/:musicId"
+}

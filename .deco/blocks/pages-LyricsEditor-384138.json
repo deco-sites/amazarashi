@@ -1,5 +1,5 @@
 {
-  "name": "LyricsEditor",
+  "name": "Lyrics Editor",
   "path": "/lyricsEditor/:musicId",
   "sections": [
     {
