@@ -12,6 +12,9 @@ interface TranslateRequest {
   sourceLanguageCode: string;
   targetLanguageCode: string;
   parent: string;
+  transliterationConfig?: {
+    enableTransliteration: boolean;
+  };
 }
 
 interface RomanizeRequest {

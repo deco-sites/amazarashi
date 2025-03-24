@@ -82,7 +82,7 @@ function MusicData(props: MusicDataProps) {
             <p class="text-justify">{description}</p>
           </div>
           <div id={lyricsTabId} className="hidden">
-            <div class="flex justify-end mb-4">
+            <div class="flex justify-center mb-4">
               <a
                 href={`/lyrics-sync/${props.data.id}`}
                 class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-md flex items-center gap-2 transition-colors"

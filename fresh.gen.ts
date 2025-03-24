@@ -3,6 +3,7 @@
 // This file is automatically updated during development when running `dev.ts`.
 
 import * as $_app from "./routes/_app.tsx";
+import * as $BackButton from "./islands/BackButton.tsx";
 import * as $LyricsEditor from "./islands/LyricsEditor.tsx";
 import * as $LyricsSync from "./islands/LyricsSync.tsx";
 import * as $LyricsSynchronization from "./islands/LyricsSynchronization.tsx";
@@ -13,6 +14,7 @@ const manifest = {
     "./routes/_app.tsx": $_app,
   },
   islands: {
+    "./islands/BackButton.tsx": $BackButton,
     "./islands/LyricsEditor.tsx": $LyricsEditor,
     "./islands/LyricsSync.tsx": $LyricsSync,
     "./islands/LyricsSynchronization.tsx": $LyricsSynchronization,
