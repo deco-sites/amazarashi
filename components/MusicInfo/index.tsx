@@ -45,8 +45,8 @@ export default function MusicInfo(props: MusicInfoProps) {
         <Icon id="ArrowBack" size={24} strokeWidth={2} />
         <span>Voltar</span>
       </BackButton>
-      <div className="flex flex-row-reverse bottomAnimationFadIn justify-between gap-4">
-        <div class="w-2/4">
+      <div className="flex flex-col lg:flex-row-reverse bottomAnimationFadIn justify-between gap-4">
+        <div class="w-full lg:w-2/4">
           <Image
             src={cover.url}
             alt={cover.alt}

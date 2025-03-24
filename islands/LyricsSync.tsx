@@ -17,6 +17,7 @@ export default function LyricsSync({ data }: LyricsSyncProps) {
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
 
   useEffect(() => {
+    const isMobile = globalThis.matchMedia("(max-width: 768px)").matches;
     const parseTimeToSeconds = (timeStr: string) => {
       const [hours, minutes, seconds] = timeStr.split(":").map(Number);
       return hours * 3600 + minutes * 60 + seconds;
@@ -46,7 +47,7 @@ export default function LyricsSync({ data }: LyricsSyncProps) {
                   const currentLineElement = document.getElementById(
                     `line-${currentLine}`,
                   );
-                  if (currentLineElement) {
+                  if (currentLineElement && !isMobile) {
                     const windowHeight = globalThis.innerHeight;
                     const lineTop =
                       currentLineElement.getBoundingClientRect().top +
@@ -57,6 +58,13 @@ export default function LyricsSync({ data }: LyricsSyncProps) {
                     globalThis.scrollTo({
                       top: lineTop - (windowHeight / 2) + (lineHeight / 2),
                       behavior: "smooth",
+                    });
+                  } else if (currentLineElement && isMobile) {
+                    console.log(currentLineElement, isMobile);
+                    currentLineElement.scrollIntoView({
+                      behavior: "smooth",
+                      block: "center",
+                      inline: "center",
                     });
                   }
                 }
@@ -76,8 +84,8 @@ export default function LyricsSync({ data }: LyricsSyncProps) {
   return (
     <>
       {/* Fixed Header */}
-      <div class="fixed top-0 left-0 right-0 bg-[#121212] z-50 px-6 lg:px-20 xl:px-36 py-4 shadow-lg">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="fixed top-0 left-0 right-0 bg-[#121212] z-50 px-6 lg:px-20 xl:px-36 py-4 shadow-lg h-[88px] lg:h-[unset]">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <BackButton className="animated !flex gap-2 w-fit cursor-pointer text-white">
             <Icon id="ArrowBack" size={24} strokeWidth={2} />
             <span>Voltar</span>
@@ -87,11 +95,14 @@ export default function LyricsSync({ data }: LyricsSyncProps) {
       </div>
 
       {/* Main Content with padding-top to account for fixed header */}
-      <div class="min-h-screen p-4 lg:p-8 lg:pt-16">
+      <div class="max-h-[calc(100vh_-_88px)] mt-[88px] lg:mt-[unset] lg:max-h-[unset] lg:min-h-screen p-4 lg:p-8 lg:pt-16">
         <div class="max-w-7xl mx-auto">
           <div class="flex flex-col lg:flex-row gap-8">
             {/* Lyrics Section */}
-            <div class="lg:w-1/2">
+            <div
+              class="lg:w-1/2 max-h-[50vh] lg:max-h-[unset] overflow-y-auto overflow-x-hidden"
+              id="lyrics-container"
+            >
               <div class="space-y-6">
                 {data.lyrics[0]?.lines.map((line, index) => {
                   const isCurrentLine = index === currentLineIndex;
@@ -110,9 +121,7 @@ export default function LyricsSync({ data }: LyricsSyncProps) {
                       id={`line-${index}`}
                       key={index}
                       class={`transition-all duration-300 ${
-                        isCurrentLine
-                          ? "scale-105 text-white "
-                          : "text-gray-400"
+                        isCurrentLine ? "text-white " : "text-gray-400"
                       }`}
                     >
                       <p

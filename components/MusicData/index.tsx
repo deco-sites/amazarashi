@@ -148,7 +148,7 @@ function MusicData(props: MusicDataProps) {
             </div>
           </div>
         </div>
-        <div className="lg:w-1/2 lg:sticky lg:top-16 min-h-[500px] h-full max-h-[500px]">
+        <div className="lg:w-1/2 lg:sticky lg:top-16 lg:min-h-[500px] lg:h-full lg:max-h-[500px]">
           <iframe
             className="aspect-video"
             width="100%"
