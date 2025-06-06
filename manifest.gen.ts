@@ -20,20 +20,22 @@ import * as $$$11 from "./loaders/Translation/Translator.ts";
 import * as $$$$$$0 from "./sections/AlbumInfo.tsx";
 import * as $$$$$$1 from "./sections/Component.tsx";
 import * as $$$$$$2 from "./sections/CoverSlider.tsx";
-import * as $$$$$$3 from "./sections/Hero.tsx";
-import * as $$$$$$4 from "./sections/LatestRelease.tsx";
-import * as $$$$$$5 from "./sections/LyricsEditor.tsx";
-import * as $$$$$$6 from "./sections/LyricsSync.tsx";
-import * as $$$$$$7 from "./sections/LyricsSynchronization.tsx";
-import * as $$$$$$8 from "./sections/MenuDemo.tsx";
-import * as $$$$$$9 from "./sections/MusicData.tsx";
-import * as $$$$$$10 from "./sections/MusicHero.tsx";
-import * as $$$$$$11 from "./sections/MusicInfo.tsx";
-import * as $$$$$$12 from "./sections/MusicList.tsx";
-import * as $$$$$$13 from "./sections/SeoLoader.tsx";
-import * as $$$$$$14 from "./sections/ShowBeforeAnimation.tsx";
-import * as $$$$$$15 from "./sections/Spacer.ts";
-import * as $$$$$$16 from "./sections/Theme/Theme.tsx";
+import * as $$$$$$3 from "./sections/Footer.tsx";
+import * as $$$$$$4 from "./sections/Hero.tsx";
+import * as $$$$$$5 from "./sections/HomeScrollAnimater.tsx";
+import * as $$$$$$6 from "./sections/LatestRelease.tsx";
+import * as $$$$$$7 from "./sections/LyricsEditor.tsx";
+import * as $$$$$$8 from "./sections/LyricsSync.tsx";
+import * as $$$$$$9 from "./sections/LyricsSynchronization.tsx";
+import * as $$$$$$10 from "./sections/MenuDemo.tsx";
+import * as $$$$$$11 from "./sections/MusicData.tsx";
+import * as $$$$$$12 from "./sections/MusicHero.tsx";
+import * as $$$$$$13 from "./sections/MusicInfo.tsx";
+import * as $$$$$$14 from "./sections/MusicList.tsx";
+import * as $$$$$$15 from "./sections/SeoLoader.tsx";
+import * as $$$$$$16 from "./sections/ShowBeforeAnimation.tsx";
+import * as $$$$$$17 from "./sections/Spacer.ts";
+import * as $$$$$$18 from "./sections/Theme/Theme.tsx";
 
 const manifest = {
   "loaders": {
@@ -54,20 +56,22 @@ const manifest = {
     "site/sections/AlbumInfo.tsx": $$$$$$0,
     "site/sections/Component.tsx": $$$$$$1,
     "site/sections/CoverSlider.tsx": $$$$$$2,
-    "site/sections/Hero.tsx": $$$$$$3,
-    "site/sections/LatestRelease.tsx": $$$$$$4,
-    "site/sections/LyricsEditor.tsx": $$$$$$5,
-    "site/sections/LyricsSync.tsx": $$$$$$6,
-    "site/sections/LyricsSynchronization.tsx": $$$$$$7,
-    "site/sections/MenuDemo.tsx": $$$$$$8,
-    "site/sections/MusicData.tsx": $$$$$$9,
-    "site/sections/MusicHero.tsx": $$$$$$10,
-    "site/sections/MusicInfo.tsx": $$$$$$11,
-    "site/sections/MusicList.tsx": $$$$$$12,
-    "site/sections/SeoLoader.tsx": $$$$$$13,
-    "site/sections/ShowBeforeAnimation.tsx": $$$$$$14,
-    "site/sections/Spacer.ts": $$$$$$15,
-    "site/sections/Theme/Theme.tsx": $$$$$$16,
+    "site/sections/Footer.tsx": $$$$$$3,
+    "site/sections/Hero.tsx": $$$$$$4,
+    "site/sections/HomeScrollAnimater.tsx": $$$$$$5,
+    "site/sections/LatestRelease.tsx": $$$$$$6,
+    "site/sections/LyricsEditor.tsx": $$$$$$7,
+    "site/sections/LyricsSync.tsx": $$$$$$8,
+    "site/sections/LyricsSynchronization.tsx": $$$$$$9,
+    "site/sections/MenuDemo.tsx": $$$$$$10,
+    "site/sections/MusicData.tsx": $$$$$$11,
+    "site/sections/MusicHero.tsx": $$$$$$12,
+    "site/sections/MusicInfo.tsx": $$$$$$13,
+    "site/sections/MusicList.tsx": $$$$$$14,
+    "site/sections/SeoLoader.tsx": $$$$$$15,
+    "site/sections/ShowBeforeAnimation.tsx": $$$$$$16,
+    "site/sections/Spacer.ts": $$$$$$17,
+    "site/sections/Theme/Theme.tsx": $$$$$$18,
   },
   "actions": {
     "site/actions/Lyrics/save.ts": $$$$$$$$$0,

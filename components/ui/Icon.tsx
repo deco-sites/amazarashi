@@ -41,8 +41,13 @@ export type AvailableIcons =
   | "music_album"
   | "music_disc"
   | "pencil"
-  | "view";
-
+  | "view"
+  | "AmazonMusic"
+  | "Deezer"
+  | "AppleMusic"
+  | "X"
+  | "Tiktok"
+  | "Youtube";
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**
    * Symbol id from element to render. Take a look at `/static/icons.svg`.
@@ -54,8 +59,13 @@ interface Props extends JSX.SVGAttributes<SVGSVGElement> {
 }
 
 function Icon(
-  { id, strokeWidth = 16, size, width, height, ...otherProps }: Props,
+  { id, strokeWidth, size, width, height, ...otherProps }: Props,
 ) {
+  if (strokeWidth === undefined && id === "Tiktok") {
+    strokeWidth = 3;
+  } else if (strokeWidth === undefined) {
+    strokeWidth = 16;
+  }
   return (
     <svg
       {...otherProps}

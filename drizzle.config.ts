@@ -2,6 +2,7 @@ import { defineConfig } from "drizzle-kit";
 
 const user = Deno.env.get("DATABASE_USER") ?? "amazarashi";
 const password = Deno.env.get("DATABASE_PASSWORD") ?? "amazarashi";
+
 export const dbCredentials = {
   host: "selfhost.gui.dev.br",
   port: 5432,
