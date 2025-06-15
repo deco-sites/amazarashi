@@ -1,5 +1,5 @@
 import { RequestURLParam } from "apps/website/functions/requestToParam.ts";
-import { eq, sql } from "drizzle-orm";
+import { asc, eq, sql } from "drizzle-orm";
 import { AppContext } from "site/apps/site.ts";
 import { MusicListItem } from "site/components/MusicList/index.tsx";
 import { musics, musics_albums } from "site/db/schema.ts";
@@ -25,7 +25,8 @@ export default async function loader(props: LoaderProps, _req: Request, ctx: App
     })
     .from(musics_albums)
     .leftJoin(musics, eq(musics_albums.musicId, musics.id))
-    .where(eq(musics_albums.albumId, albumId));
+    .where(eq(musics_albums.albumId, albumId))
+    .orderBy(asc(musics_albums.position));
 
   return musicsResponse.map((music) => ({
     id: music.id ?? "",
