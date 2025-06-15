@@ -70,6 +70,12 @@
           }
         }
       }
+    },
+    {
+      "__resolveType": "Spacer"
+    },
+    {
+      "__resolveType": "Footer"
     }
   ]
 }
