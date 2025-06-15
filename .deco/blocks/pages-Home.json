@@ -51,11 +51,26 @@
     },
     {
       "__resolveType": "site/sections/VideoSliderSection.tsx",
-      "videos": {
-        "__resolveType": "site/loaders/VideoSlider/records.ts"
-      },
       "title": "Ultimos Videos",
-      "backgroundColor": "dark"
+      "backgroundColor": "dark",
+      "videos": [
+        {
+          "videoId": "uRrM02T1gmg",
+          "title": "Music Video - Reimeiki"
+        },
+        {
+          "title": "Music Video - Sense of Pain",
+          "videoId": "enG720dM4kA"
+        },
+        {
+          "title": "Music Video - Kimino Best Life",
+          "videoId": "gxW-QzUyoSk"
+        },
+        {
+          "videoId": "tn-fJxLtpNw",
+          "title": "Music Video - Gomenne Odyssey"
+        }
+      ]
     },
     {
       "__resolveType": "site/sections/Footer.tsx",
