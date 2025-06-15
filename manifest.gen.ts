@@ -17,6 +17,7 @@ import * as $$$8 from "./loaders/MusicList/recordsAlbuns.ts";
 import * as $$$9 from "./loaders/SeoLoader/records/album.ts";
 import * as $$$10 from "./loaders/SeoLoader/records/music.ts";
 import * as $$$11 from "./loaders/Translation/Translator.ts";
+import * as $$$12 from "./loaders/VideoSlider/records.ts";
 import * as $$$$$$0 from "./sections/AlbumInfo.tsx";
 import * as $$$$$$1 from "./sections/Component.tsx";
 import * as $$$$$$2 from "./sections/CoverSlider.tsx";
@@ -36,6 +37,7 @@ import * as $$$$$$15 from "./sections/SeoLoader.tsx";
 import * as $$$$$$16 from "./sections/ShowBeforeAnimation.tsx";
 import * as $$$$$$17 from "./sections/Spacer.ts";
 import * as $$$$$$18 from "./sections/Theme/Theme.tsx";
+import * as $$$$$$19 from "./sections/VideoSliderSection.tsx";
 
 const manifest = {
   "loaders": {
@@ -51,6 +53,7 @@ const manifest = {
     "site/loaders/SeoLoader/records/album.ts": $$$9,
     "site/loaders/SeoLoader/records/music.ts": $$$10,
     "site/loaders/Translation/Translator.ts": $$$11,
+    "site/loaders/VideoSlider/records.ts": $$$12,
   },
   "sections": {
     "site/sections/AlbumInfo.tsx": $$$$$$0,
@@ -72,6 +75,7 @@ const manifest = {
     "site/sections/ShowBeforeAnimation.tsx": $$$$$$16,
     "site/sections/Spacer.ts": $$$$$$17,
     "site/sections/Theme/Theme.tsx": $$$$$$18,
+    "site/sections/VideoSliderSection.tsx": $$$$$$19,
   },
   "actions": {
     "site/actions/Lyrics/save.ts": $$$$$$$$$0,

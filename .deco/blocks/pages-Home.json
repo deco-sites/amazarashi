@@ -50,6 +50,14 @@
       }
     },
     {
+      "__resolveType": "site/sections/VideoSliderSection.tsx",
+      "videos": {
+        "__resolveType": "site/loaders/VideoSlider/records.ts"
+      },
+      "title": "Ultimos Videos",
+      "backgroundColor": "dark"
+    },
+    {
       "__resolveType": "site/sections/Footer.tsx",
       "menuItens": [
         {
